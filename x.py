@@ -60,8 +60,6 @@ class LynqServer:
     def close(self) -> None:
         self._stop_server()
 
-logger = logging.getLogger(__name__)
-
 class ConfigurableLynqServer(LynqServer):
     def __init__(self, config_file: Optional[str] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
         config = self.load_config(config_file)
