@@ -1,7 +1,7 @@
 from subprocess import run
 import logging
 from typing import Callable, Optional
-from lynq.x import LynqServer
+from lynq.server import LynqServer
 
 from http.server import BaseHTTPRequestHandler
 
