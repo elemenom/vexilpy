@@ -496,3 +496,324 @@ In this example:
 The `InternetExplorerInstance` class provides a Python interface to automate Internet Explorer using PowerShell. It supports opening a new browser window, navigating to URLs, and refreshing the page. This class is useful in scenarios where Internet Explorer needs to be controlled programmatically, particularly in testing or automation tasks.
 
 **Microsoft Internet Explorer is deprecated, but it's still a handy tool to view local servers (via localhost), and Lynq let's you do that quickly and easily.**
+
+# New features in Lynq for Python 2.0
+
+## P.E.B.L (Python Embedded Building Language) Documentation
+
+**P.E.B.L (Python Embedded Building Language)** is a lightweight and flexible framework designed to facilitate the dynamic generation and serving of HTML content within a Python environment. It integrates seamlessly with the Lynq ecosystem, leveraging the power of LynqServer and ConfigurableLynqServer to deliver web content directly to the user.
+
+#### Overview
+
+P.E.B.L provides a streamlined interface for creating and managing web pages from within Python scripts. It supports a tag-based structure for building HTML components, enabling users to embed HTML directly in Python with ease. The core component of P.E.B.L is the `PeblApp` class, which manages the generation of HTML files and interacts with Lynq servers to serve this content.
+
+#### Key Components
+
+##### 1. **PeblApp Class**
+
+The `PeblApp` class is the heart of P.E.B.L. It manages the lifecycle of an HTML page, from creation to serving, within a LynqServer environment.
+
+- **Initialization (`__init__`)**:
+  
+  ```python
+  def __init__(self, name: str, server: LynqServer | ConfigurableLynqServer | None = None) -> None:
+  ```
+
+  - `name`: The name of the HTML file to be created (without the `.html` extension).
+  - `server`: An instance of `LynqServer`, `ConfigurableLynqServer`, or `None`. If provided, this server will be used to serve the generated HTML content.
+
+  **Example**:
+  ```python
+  app = PeblApp(name="index", server=my_server)
+  ```
+
+- **Tag Creation (`tag`)**:
+
+  ```python
+  def tag(self, type_: str, args: Optional[str] = None) -> Any:
+  ```
+
+  - `type_`: The type of HTML tag to be generated (e.g., `div`, `p`, `a`).
+  - `args`: Optional attributes or content for the tag.
+
+  This method returns a `TagObject` which can be further manipulated or directly inserted into the HTML document.
+
+  **Example**:
+  ```python
+  app.tag("div", "class='container'")
+  ```
+
+- **Single Line Insertion (`single`)**:
+
+  ```python
+  def single(self, ln: str) -> None:
+  ```
+
+  - `ln`: A string representing a single line of HTML to be appended to the HTML file.
+
+  This method allows for quick insertion of raw HTML content into the document.
+
+  **Example**:
+  ```python
+  app.single("<h1>Welcome to P.E.B.L!</h1>")
+  ```
+
+- **Exiting Context (`__exit__`)**:
+
+  ```python
+  def __exit__(self, *_) -> None:
+  ```
+
+  Automatically invoked when the `PeblApp` instance exits a context manager. This method ensures that the generated HTML content is passed to the server for serving.
+
+  **Example**:
+  ```python
+  with PeblApp(name="index", server=my_server) as app:
+      app.single("<p>Hello, World!</p>")
+  ```
+
+- **Pass to Server (`pass_to_server`)**:
+
+  ```python
+  def pass_to_server(self) -> None:
+  ```
+
+  This method handles passing the generated HTML file to the provided server instance and launching it. If no server is provided, an error is logged, and an exception is raised.
+
+  **Example**:
+  ```python
+  app.pass_to_server()
+  ```
+
+#### Usage Example
+
+Here's a basic example of using P.E.B.L to generate and serve an HTML page:
+
+```python
+from lynq.server import LynqServer
+from lynq.pebl import PeblApp
+
+# Create a LynqServer instance
+server = LynqServer(port=8080, directory=".")
+
+# Initialize the PeblApp with the server
+with PeblApp(name="index", server=server) as app:
+    app.single("<h1>Hello from P.E.B.L!</h1>")
+    app.single("<p>This is a dynamically generated page.</p>")
+```
+
+#### Error Handling
+
+- If no server is provided when attempting to pass the script to a server, an error is logged, and an exception is raised.
+  
+  **Example Error**:
+  ```python
+  logger.error("Cannot pass pebl script to server when no server was provided.")
+  ```
+
+- The HTML file is automatically removed after it has been served to prevent unnecessary clutter, ensuring a clean working directory.
+
+#### Integration with Lynq
+
+P.E.B.L integrates tightly with Lynq, allowing for a fluid workflow where HTML content can be generated and served within the same Python environment. It leverages the existing `LynqServer` and `ConfigurableLynqServer` classes for this purpose.
+
+This documentation covers the basics of working with P.E.B.L, including the main class `PeblApp`, its methods, and typical usage patterns. For more advanced features or extensions, refer to the full Lynq documentation or explore additional components within the `lynq.pebl` module.
+
+## Lynq 2.0 Logging with External Terminal Setup
+
+### Overview
+
+Lynq 2.0 introduces an upgraded logging system that allows for more flexible and powerful logging configurations, including the ability to log to an external terminal or console. This enhancement provides developers with better control over logging output, making it easier to monitor and debug applications in real-time.
+
+### Key Features
+
+1. **Enhanced Logging Flexibility**: Configure logging to output to an external terminal, allowing real-time monitoring of log messages.
+2. **Customizable Log Formats**: Define custom formats for log messages to suit different needs and preferences.
+3. **Advanced Logging Levels**: Utilize different logging levels (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL) for more granular control over what gets logged.
+4. **Integration with External Terminal**: Redirect log output to an external terminal for easier access and visibility.
+
+### Setup and Configuration
+
+#### 1. **Initial Configuration**
+
+Lynq 2.0’s logging system can be configured using the `logging` module in Python. To set up logging to an external terminal, you need to configure the logging handlers appropriately.
+
+#### 2. **Configure Logging to an External Terminal**
+
+To direct logs to an external terminal, follow these steps:
+
+##### a. **Import the Required Modules**
+
+```python
+import logging
+import sys
+```
+
+##### b. **Set Up the Logging Configuration**
+
+You can configure logging to output to an external terminal by using the `StreamHandler` provided by Python's `logging` module. This handler can be set up to write log messages to `sys.stdout`, which is the standard output stream often connected to the terminal.
+
+```python
+def setup_logging():
+    # Create a logger
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)  # Set the root logger level
+
+    # Create a stream handler to output to the terminal
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(logging.DEBUG)  # Set the handler level
+
+    # Create a formatter and set it for the handler
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+
+    # Add the handler to the logger
+    logger.addHandler(handler)
+```
+
+##### c. **Use the Logger in Your Application**
+
+After setting up logging, you can use the logger in your application code to log messages:
+
+```python
+def main():
+    setup_logging()
+    
+    logger = logging.getLogger(__name__)
+    
+    logger.debug("This is a debug message")
+    logger.info("This is an info message")
+    logger.warning("This is a warning message")
+    logger.error("This is an error message")
+    logger.critical("This is a critical message")
+    
+if __name__ == "__main__":
+    main()
+```
+
+#### 3. **Customizing Log Output**
+
+You can further customize the logging output by modifying the `Formatter` in the `setup_logging` function. For example, you can include additional information like module names or line numbers.
+
+##### Example Formatter Customization
+
+```python
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(module)s - %(lineno)d - %(message)s')
+```
+
+#### 4. **Integration with External Terminal Applications**
+
+For enhanced integration, you might use external terminal applications or tools that support real-time log monitoring. Ensure that the terminal is set to receive logs from the standard output.
+
+##### Example: Running a Script in a Terminal
+
+Run your script in a terminal to see the log output directly:
+
+```bash
+python your_script.py
+```
+
+### Troubleshooting
+
+- **No Logs Appearing**: Ensure that the terminal or console you are using is configured correctly to display standard output.
+- **Incorrect Log Levels**: Verify that the logging levels set in `setup_logging` match the levels you are using in your code.
+- **Formatting Issues**: If log messages appear incorrectly formatted, check the `Formatter` configuration in the `setup_logging` function.
+
+### Summary
+
+Lynq 2.0’s upgraded logging system provides a robust solution for directing log output to an external terminal, enhancing real-time monitoring and debugging capabilities. By configuring the `StreamHandler` to use `sys.stdout`, you can easily integrate logging into your terminal-based workflows and customize the logging output to meet your needs.
+
+For more advanced configurations and additional features, refer to the [Python logging documentation](https://docs.python.org/3/library/logging.html) and explore Lynq's logging capabilities further.
+
+## Lynq Server Launch Documentation
+
+### Overview
+
+Lynq provides functionality to launch servers with ease through the `directlaunch` and `launch` functions. These functions facilitate starting and stopping `LynqServer` or `ConfigurableLynqServer` instances, handling user interaction and server management in a streamlined manner.
+
+### Functions Overview
+
+#### `directlaunch`
+
+The `directlaunch` function sets up and starts a basic `LynqServer` instance, using default values if no specific configuration is provided.
+
+##### Function Signature
+
+```python
+def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> None:
+```
+
+##### Parameters
+
+- **`port`** (`Optional[int]`): The port number on which the server will listen. Defaults to `8000` if not provided.
+- **`directory`** (`Optional[str]`): The directory from which to serve files. Defaults to the current working directory (`"."`) if not provided.
+
+##### Functionality
+
+1. **Initialization**: Creates an instance of `LynqServer` with the specified port and directory.
+2. **Starting the Server**: Calls the `open` method to start the server.
+3. **User Interaction**: Waits for user input to keep the server running. The prompt message is styled in yellow to indicate the user should press Enter to exit.
+4. **Stopping the Server**: Ensures the server is properly closed after exiting the user prompt.
+
+##### Example Usage
+
+```python
+# Launch a LynqServer on port 8080 serving from the current directory
+directlaunch(port=8080)
+```
+
+#### `launch`
+
+The `launch` function starts a server instance, which can be either a `LynqServer` or a `ConfigurableLynqServer`. It is more flexible than `directlaunch` as it accepts any server that adheres to the expected interface.
+
+##### Function Signature
+
+```python
+def launch(server: LynqServer | ConfigurableLynqServer):
+```
+
+##### Parameters
+
+- **`server`** (`LynqServer | ConfigurableLynqServer`): An instance of `LynqServer` or `ConfigurableLynqServer` that will be started.
+
+##### Functionality
+
+1. **Starting the Server**: Calls the `open` method on the provided server instance to start it.
+2. **User Interaction**: Waits for user input to keep the server running. The prompt message is styled in yellow to indicate the user should press Enter to exit.
+3. **Stopping the Server**: Ensures the server is properly closed after exiting the user prompt.
+
+##### Example Usage
+
+```python
+from lynq.server import LynqServer
+from lynq.customserver import ConfigurableLynqServer
+
+# Create a LynqServer instance
+server = LynqServer(port=8080, directory=".")
+
+# Launch the server
+launch(server)
+
+# Create a ConfigurableLynqServer instance with custom settings
+config_server = ConfigurableLynqServer(config_file="config.json")
+
+# Launch the configurable server
+launch(config_server)
+```
+
+### Error Handling
+
+- **No Server Provided**: Ensure that a valid `LynqServer` or `ConfigurableLynqServer` instance is passed to `launch`. Otherwise, an exception may be raised.
+
+- **Port Conflicts**: If the specified port is already in use, an `OSError` or similar exception may be encountered when trying to start the server.
+
+- **Directory Issues**: Ensure the specified directory exists and is accessible. Incorrect paths may lead to errors when attempting to serve files.
+
+### Summary
+
+The `directlaunch` and `launch` functions provide straightforward methods for starting and stopping Lynq servers. `directlaunch` is a simple wrapper around `LynqServer`, while `launch` offers flexibility by accepting any compatible server instance. Both functions ensure that the server runs interactively, waiting for user input to gracefully shut down.
+
+**The directlaunch function is a rename of the OG launch function, which has been repurposed to run already created servers with the same treatement as directlaunched ones**
+
+> Hey! This is Enji! I hope you enjoy this new release of Lynq for Python. As you may know, this is an entirely solo open-source project I've been working on.
+> If you have __any__ issues, suggestions, or feedback, please open an issue!
