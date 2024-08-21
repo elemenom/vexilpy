@@ -11,6 +11,12 @@ def clean_up() -> None:
 
     if os.path.exists("lynq.log"):
         os.remove("lynq.log")
-        print(f"[Exiting...] Program ran successfully >> {warn_count} warning(s) in total")
 
-atexit.register(clean_up)
+def at_exit_func() -> None:
+    logger.info("Nearing program end, commencing clean up process.")
+    
+    clean_up()
+
+    print(f"[Exiting...] Program ended successfully. All active servers terminated.")
+
+atexit.register(at_exit_func)

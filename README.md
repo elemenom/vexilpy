@@ -543,10 +543,10 @@ The `PeblApp` class is the heart of P.E.B.L. It manages the lifecycle of an HTML
   app.tag("div", "class='container'")
   ```
 
-- **Single Line Insertion (`single`)**:
+- **Single Line Insertion (`singular`)**:
 
   ```python
-  def single(self, ln: str) -> None:
+  def singular(self, ln: str) -> None:
   ```
 
   - `ln`: A string representing a single line of HTML to be appended to the HTML file.
@@ -555,7 +555,7 @@ The `PeblApp` class is the heart of P.E.B.L. It manages the lifecycle of an HTML
 
   **Example**:
   ```python
-  app.single("<h1>Welcome to P.E.B.L!</h1>")
+  app.singular("<h1>Welcome to P.E.B.L!</h1>")
   ```
 
 - **Exiting Context (`__exit__`)**:
@@ -569,7 +569,7 @@ The `PeblApp` class is the heart of P.E.B.L. It manages the lifecycle of an HTML
   **Example**:
   ```python
   with PeblApp(name="index", server=my_server) as app:
-      app.single("<p>Hello, World!</p>")
+      app.singular("<p>Hello, World!</p>")
   ```
 
 - **Pass to Server (`pass_to_server`)**:
@@ -598,8 +598,8 @@ server = LynqServer(port=8080, directory=".")
 
 # Initialize the PeblApp with the server
 with PeblApp(name="index", server=server) as app:
-    app.single("<h1>Hello from P.E.B.L!</h1>")
-    app.single("<p>This is a dynamically generated page.</p>")
+    app.singular("<h1>Hello from P.E.B.L!</h1>")
+    app.singular("<p>This is a dynamically generated page.</p>")
 ```
 
 #### Error Handling
