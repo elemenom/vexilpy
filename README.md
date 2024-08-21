@@ -817,3 +817,16 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 
 > Hey! This is Enji! I hope you enjoy this new release of Lynq for Python. As you may know, this is an entirely solo open-source project I've been working on.
 > If you have __any__ issues, suggestions, or feedback, please open an issue!
+
+# New features in Lynq v3.0.0 for Python
+
+- Bug fixes
+- P.E.B.L has default supported tags; so instead of `app.tag("html", "arguments")`, you can write `app.html("arguments")`
+- P.E.B.L apps are now created using the `appnode` decorator from `lynq.pebl.app`
+- External logging has been changed to run in the terminal you started the server from.
+- More logging
+- Better clean up
+- Many P.E.B.L improvements
+- No more log file
+- Warn count has been removed
+- Other QoL changes
