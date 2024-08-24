@@ -5,7 +5,7 @@ import http.server
 import argparse
 
 from lynq.server import LynqServer
-from lynq.logger import logger, warn_count
+from lynq.logger import logger
 
 class ConfigurableLynqServer(LynqServer):
     def __init__(self, config_file: Optional[str] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
@@ -26,7 +26,6 @@ class ConfigurableLynqServer(LynqServer):
                     logger.error(f"Error parsing config file: {e}")
         else:
             logger.warning(f"No valid config file found. Using default settings.")
-            warning_count += 1
         return {}
 
     @staticmethod

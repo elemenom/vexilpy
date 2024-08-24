@@ -1,5 +1,6 @@
 from typing import Optional
 
+from lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.server import LynqServer
 from lynq.customserver import ConfigurableLynqServer
 
@@ -13,7 +14,7 @@ def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) ->
     finally:
         server.close()
 
-def launch(server: LynqServer | ConfigurableLynqServer):
+def launch(server: LynqServerOrRelatedObjects):
     try:
         server.open()
         input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")

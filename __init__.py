@@ -2,7 +2,7 @@ import atexit
 import os
 import logging
 
-from lynq.logger import logger, warn_count
+from lynq.logger import logger
 
 def clean_up() -> None:
     handlers: list[logging.Handler] = logger.handlers

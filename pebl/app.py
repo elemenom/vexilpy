@@ -1,16 +1,15 @@
 from typing import Any, Optional, Callable
 import os
 
-from lynq.server import LynqServer
+from lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.logger import logger
-from lynq.customserver import ConfigurableLynqServer
 from lynq.launcher import launch
 
 from lynq.pebl.supportswith import SupportsWithKeyword
 from lynq.pebl.supportedtags import supported_tags as supported_tags_
 
 class AppObject(SupportsWithKeyword):
-    def __init__(self, name: Optional[str], server: LynqServer | ConfigurableLynqServer | None = None) -> None:
+    def __init__(self, name: Optional[str], server: LynqServerOrRelatedObjects | None = None) -> None:
 
         self.server: Any = server
         self.name: str = f"{name}.html"
@@ -45,7 +44,7 @@ class AppObject(SupportsWithKeyword):
         logger.info("Continuing in pebl app to clear cache.")
         os.remove("index.html")
 
-def appnode(server: LynqServer | ConfigurableLynqServer | None = None) -> Callable:
+def appnode(server: LynqServerOrRelatedObjects | None = None) -> Callable:
     def wrapper(fn: Callable) -> Callable:
         def wrapper2(*args: Any, **kwargs: Any) -> Any:
             app: AppObject = AppObject(fn.__name__, server)
