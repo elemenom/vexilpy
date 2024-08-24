@@ -1,7 +1,8 @@
 # lynq
 
 
-Lynq for Python is an open-source python framework that allows developers to host servers absurdly easily (we're talking 1-line easily)
+Lynq for Python is an open-source python framework that allows developers to host servers absurdly easily
+(we're talking 1-line easily)
 And this isn't even an exaggeration! Once you have Lynq imported, the world is basically in your hands.
 
 Let's look at the most configurable and advanced way to host servers using Lynq,
@@ -18,6 +19,39 @@ The `ConfigurableLynqServer` class is designed to provide a customizable HTTP se
 1. **Configuration File**: A JSON file containing server settings.
 2. **Command-line Arguments**: Options provided via the command line to override or set specific settings.
 3. **Default Values**: Fallbacks for when no other configuration is provided.
+
+### Class Definition
+
+```python
+class ConfigurableLynqServer(LynqServer):
+    def __init__(self, config_file: Optional[str] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
+        config = self.load_config(config_file)
+        port = config.get("port", 8000)  # Default to int
+        directory = directory or config.get("directory")
+        super().__init__(port, directory, handler)
+
+    @staticmethod
+    def load_config(config_file: Optional[str]) -> dict:
+        if config_file and Path(config_file).exists():
+            with open(config_file, 'r') as f:
+                try:
+                    config = json.load(f)
+                    logger.info(f"Loaded configuration from {config_file}")
+                    return config
+                except json.JSONDecodeError as e:
+                    logger.error(f"Error parsing config file: {e}")
+        else:
+            logger.warning(f"No valid config file found. Using default settings.")
+        return {}
+
+    @staticmethod
+    def parse_args() -> argparse.Namespace:
+        parser = argparse.ArgumentParser(description="Start a local HTTP server.")
+        parser.add_argument('--port', type=int, default=8000, help="Port number to run the server on")
+        parser.add_argument('--config', type=str, help="Path to configuration file")
+        parser.add_argument('--directory', type=str, help="Directory to serve files from")
+        return parser.parse_args()
+```
 
 ## Constructor: `__init__`
 
@@ -88,8 +122,6 @@ This method is typically called when running the server script from the command 
 ## Usage Example
 
 ```python
-from lynq.customserver import ConfigurableLynqServer
-
 if __name__ == "__main__":
     args = ConfigurableLynqServer.parse_args()
     server = ConfigurableLynqServer(config_file=args.config, directory=args.directory)
@@ -120,6 +152,58 @@ The `LynqServer` class is designed to facilitate the creation and management of 
 - Create a custom request handler.
 - Start and stop the server.
 - Automatically open a web browser pointing to the server’s URL.
+
+### Class Definition
+
+```python
+class LynqServer:
+    def __init__(self, port: int, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
+        self.port: int = port
+        self.directory: Path = Path(directory) if directory else Path.cwd()
+        self.handler: Type[http.server.BaseHTTPRequestHandler] = handler or self._create_handler()
+        try:
+            self.httpd: socketserver.TCPServer = socketserver.TCPServer(("localhost", self.port), self.handler)
+            self.httpd.directory = str(self.directory)  # Set directory for the server
+            logger.info(f"Server initialized on port {self.port} with directory {self.directory}")
+        except OSError as e:
+            logger.error(f"Could not start server on port {self.port}: {e}")
+            raise
+
+    def _create_handler(self) -> Type[http.server.BaseHTTPRequestHandler]:
+        class CustomHandler(http.server.SimpleHTTPRequestHandler):
+            def translate_path(self, path: str) -> str:
+                # Removes query parameters, etc., from the URL path
+                path = path.split('?', 1)[0]
+                path = path.split('#', 1)[0]
+                path = Path(path).relative_to('/')
+
+                # Combine the requested path with the server's directory
+                full_path = self.server.directory / path
+
+                # Resolve the final absolute path
+                return str(full_path.resolve())
+        return CustomHandler
+
+    def _start_server(self) -> None:
+        server_thread: threading.Thread = threading.Thread(target=self.httpd.serve_forever)
+        server_thread.daemon = True
+        server_thread.start()
+        logger.info(f"Server started on port {self.port}")
+
+    def open(self) -> None:
+        self._start_server()
+        url = f"http://localhost:{self.port}"
+        logger.info(f"Opening browser at {url}")
+        webbrowser.open(url)
+
+    def _stop_server(self) -> None:
+        self.httpd.shutdown()
+        self.httpd.server_close()
+        logger.info(f"Server on port {self.port} stopped")
+
+    def close(self) -> None:
+        self._stop_server()
+```
 
 ## Constructor: `__init__`
 
@@ -206,8 +290,6 @@ This method is a public interface to stop the server by calling `_stop_server`.
 ## Usage Example
 
 ```python
-from lynq.server import LynqServer
-
 if __name__ == "__main__":
     server = LynqServer(port=8000, directory="/path/to/serve")
     server.open()
@@ -233,55 +315,21 @@ The `LynqServer` class provides a simple and customizable way to create an HTTP 
 
 # `launch` Function Documentation
 
-The `launch` function is a convenient method for starting and stopping a Lynq server instance, whether it's a `LynqServer` or a `ConfigurableLynqServer`. This function manages the entire lifecycle of the server, from opening it for connections to gracefully shutting it down once the user decides to exit.
+The `launch` function is a utility function that simplifies the process of starting a `LynqServer` instance. It is designed to quickly initialize, start, and manage the lifecycle of a basic HTTP server with minimal setup.
 
-### Function Signature
-
-```python
-def launch(server: LynqServer | ConfigurableLynqServer):
-```
-
-### Parameters
-
-- **`server`** (`LynqServer | ConfigurableLynqServer`): An instance of `LynqServer` or `ConfigurableLynqServer` that will be started. This parameter allows for flexibility, as any server instance that adheres to the Lynq server interface can be used.
-
-### Functionality
-
-1. **Starting the Server**: 
-   - The function calls the `open()` method on the provided `server` instance. This initiates the server, making it ready to handle incoming requests.
-   
-2. **User Interaction**: 
-   - The function waits for the user to press Enter by displaying a prompt styled in yellow. This keeps the server running until the user manually intervenes. The prompt message is:
-     ```plaintext
-     Press enter to exit your Lynq server...
-     ```
-
-3. **Stopping the Server**: 
-   - After the user presses Enter, the `finally` block is executed, ensuring that the `close()` method is called on the `server` instance. This shuts down the server gracefully, releasing any resources it was using.
-
-### Example Usage
+## Function Definition
 
 ```python
-from lynq.server import LynqServer
-from lynq.customserver import ConfigurableLynqServer
-from lynq.launcher import launch
+def launch(port: Optional[int] = None, directory: Optional[str] = None) -> None:
+    server: LynqServer = LynqServer(port or 8000, directory or ".")
 
-# Example with a basic LynqServer
-server = LynqServer(port=8080, directory=".")
-launch(server)
+    try:
+        server.open()
+        input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")
 
-# Example with a ConfigurableLynqServer
-config_server = ConfigurableLynqServer(config_file="config.json")
-launch(config_server)
+    finally:
+        server.close()
 ```
-
-### Summary
-
-The `launch` function is an essential utility in Lynq that simplifies the process of running a server. By handling the server's lifecycle within a single function, it ensures that the server operates smoothly and shuts down cleanly, providing a seamless user experience.
-
-# `directlaunch` Function Documentation
-
-The `directlaunch` function is a utility function that simplifies the process of starting a `LynqServer` instance. It is designed to quickly initialize, start, and manage the lifecycle of a basic HTTP server with minimal setup.
 
 ### Parameters
 
@@ -310,10 +358,8 @@ The `directlaunch` function is a utility function that simplifies the process of
 ### Usage Example
 
 ```python
-from lynq.launcher import directlaunch
-
 if __name__ == "__main__":
-    directlaunch(port=8080, directory="/path/to/serve")
+    launch(port=8080, directory="/path/to/serve")
 ```
 
 In this example:
