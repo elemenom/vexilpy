@@ -830,3 +830,15 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 - No more log file
 - Warn count has been removed
 - Other QoL changes
+
+# New features in Lynq v4.0.0 for Python
+- Bug fixes
+- Support for Basin config files
+- Various improvements and updates to the README.md file
+- Better launcher mechanics
+- Basin now comes bundled in with the base release of Lynq v4.0.0 for Python and up
+- Other QoL changes
+- Improved app node
+- Improved type annotations and types
+- Global type for all LynqServer-like objects: `LynqServerOrRelatedObjects` from `lynq.lynqserverorrelated` 
+- The pizza is in the oven :>
