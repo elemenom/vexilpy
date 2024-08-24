@@ -231,7 +231,7 @@ The `LynqServer` class provides a simple and customizable way to create an HTTP 
 
 **`LynqServer` is a great choice for intermediate programmers that know how this works, but aren't quite experienced enough to tackle `ConfigurableLynqServer`**
 
-## `launch` Function
+# `launch` Function Documentation
 
 The `launch` function is a convenient method for starting and stopping a Lynq server instance, whether it's a `LynqServer` or a `ConfigurableLynqServer`. This function manages the entire lifecycle of the server, from opening it for connections to gracefully shutting it down once the user decides to exit.
 
