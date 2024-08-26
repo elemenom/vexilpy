@@ -4,7 +4,6 @@ import os
 from lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.logger import logger
 from lynq.launcher import launch
-from lynq.exportablefunction import ExportableFunction
 
 from lynq.pebl.supportswith import SupportsWithKeyword
 from lynq.pebl.supportedtags import supported_tags as supported_tags_
@@ -47,9 +46,9 @@ class AppObject(SupportsWithKeyword):
 
 def appnode(server: LynqServerOrRelatedObjects | None = None) -> Callable:
     def wrapper(fn: Callable) -> Callable:
-        def wrapper2(*args: Any, **kwargs: Any) -> ExportableFunction:
+        def wrapper2(*args: Any, **kwargs: Any) -> Any:
             app: AppObject = AppObject(fn.__name__, server)
-            try: return ExportableFunction(fn, app, *args, **kwargs)
+            try: return fn(app, *args, **kwargs)
             finally: app.pass_to_server()
         
         return wrapper2
