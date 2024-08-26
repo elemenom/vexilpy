@@ -842,3 +842,17 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 - Improved type annotations and types
 - Global type for all LynqServer-like objects: `LynqServerOrRelatedObjects` from `lynq.lynqserverorrelated` 
 - The pizza is in the oven :>
+
+# BetterPebl (branch)
+- Improves performance of P.E.B.L
+- Fixes some P.E.B.L related bugs
+- Makes coding P.E.B.L easier by removing the need for the initial `<!DOCTYPE html>` singular and `html` tags.
+- P.E.B.L `appnode`s are now ran using the `export` function from `lynq.pebl.export`
+- P.E.B.L `appnode`s are faster and parsed efficiently using exportable functions
+
+## Pull Later (ignore this):
+- New file exportablefunction.py
+- Move supportswith.py to lynq/
+- readme.md
+- app.py
+- exportablefunction.py
