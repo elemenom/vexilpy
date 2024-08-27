@@ -9,12 +9,16 @@ from lynq.pebl.supportswith import SupportsWithKeyword
 from lynq.pebl.supportedtags import supported_tags as supported_tags_
 
 class AppObject(SupportsWithKeyword):
-    def __init__(self, name: Optional[str], server: LynqServerOrRelatedObjects | None = None) -> None:
+    def __init__(self, name: Optional[str], server: LynqServerOrRelatedObjects | None = None, auto_prime_html: bool = True) -> None:
 
         self.server: Any = server
         self.name: str = f"{name}.html"
 
         self.init_supported_tags(supported_tags_)
+
+        self.aphtml: bool = auto_prime_html
+
+        self.prime_html() if self.aphtml else None
 
     def init_supported_tags(self, supported_tags: list[str]) -> None:
         for tag in supported_tags:
@@ -30,6 +34,8 @@ class AppObject(SupportsWithKeyword):
             file.write(ln + "\n")
     
     def __exit__(self, *_) -> None:
+        self.singular("</html>") if self.aphtml else None
+
         self.pass_to_server()
     
     def pass_to_server(self) -> None:
@@ -43,6 +49,12 @@ class AppObject(SupportsWithKeyword):
 
         logger.info("Continuing in pebl app to clear cache.")
         os.remove("index.html")
+
+    def prime_html(self) -> None:
+        self.singular("<!DOCTYPE html>")
+        self.singular("<html>")
+
+        self.aphtml = True
 
 def appnode(server: LynqServerOrRelatedObjects | None = None) -> Callable:
     def wrapper(fn: Callable) -> Callable:
