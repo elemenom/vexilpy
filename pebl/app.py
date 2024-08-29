@@ -10,9 +10,9 @@ from lynq.launcher import launch as _launch
 from lynq._utils._pebl.supportswith import SupportsWithKeyword as _SupportsWithKeyword
 from lynq._utils._pebl.supportedtags import supported_tags as _supported_tags
 
+
 class AppObject(_SupportsWithKeyword):
     def __init__(self, name: _Optional[str], server: _LynqServerOrRelatedObjects | None = None) -> None:
-
         self.server: _Any = server
         self.name: str = f"{name}.html"
 
@@ -20,6 +20,10 @@ class AppObject(_SupportsWithKeyword):
 
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
+
+        self.aphtml: bool = auto_prime_html
+
+        self.prime_html() if self.aphtml else None
 
     def init_supported_tags(self, supported_tags: list[str]) -> None:
         for tag in supported_tags:
@@ -57,8 +61,9 @@ class app:
 
     def export(self, fn: _Callable) -> _Callable:
         def wrapper(*args: _Any, **kwargs: _Any) -> _Any:
-            app: AppObject = AppObject(fn.__name__, self.server)
-            try: return fn(app, *args, **kwargs)
-            finally: app.pass_to_server()
+            app_: AppObject = AppObject(fn.__name__, self.server)
+              
+            try: return fn(app_, *args, **kwargs)
+            finally: app_.pass_to_server()
         
         return wrapper

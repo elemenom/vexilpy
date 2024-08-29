@@ -1,6 +1,5 @@
 # lynq
 
-
 Lynq for Python is an open-source python framework that allows developers to host servers absurdly easily
 (we're talking 1-line easily)
 And this isn't even an exaggeration! Once you have Lynq imported, the world is basically in your hands.
@@ -912,3 +911,8 @@ Just a short markdown file indicating the current running lynq version and how t
 - `lynq.server` is now located in `lynq.server.standard`
 - `lynq.customserver` is now located in `lynq.server.custom`
 - `lynq.basinserver` is now located in `lynq.server.basin`
+
+> Hey! Me again, Elekk. As you may know, I do Lynq completely solo as a hobby. I don't sell anything, nor do I have a Patreon or something.
+> I do this so really cool programmers like you can do their programming easier, smooth as butter.
+> The only thing is, please don't claim Lynq as your own work. It's open-source, free, with no questions asked. All I'm asking for
+> is some credit in your work so I can get Lynq out to more people. Thank you for reading and have a nice rest of your day!!
