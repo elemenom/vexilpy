@@ -1,20 +1,25 @@
-from typing import Any, Optional, Callable
-import os
+from typing import Any as _Any
+from typing import Optional as _Optional
+from typing import Callable as _Callable
+import os as _os
 
-from lynq.lynqserverorrelated import LynqServerOrRelatedObjects
-from lynq.logger import logger
-from lynq.launcher import launch
+from lynq._utils._lynq.lynqserverorrelated import LynqServerOrRelatedObjects as _LynqServerOrRelatedObjects
+from lynq._config import GLOBAL_LOGGER as _logger
+from lynq.launcher import launch as _launch
 
-from lynq.pebl.supportswith import SupportsWithKeyword
-from lynq.pebl.supportedtags import supported_tags as supported_tags_
+from lynq._utils._pebl.supportswith import SupportsWithKeyword as _SupportsWithKeyword
+from lynq._utils._pebl.supportedtags import supported_tags as _supported_tags
 
-class AppObject(SupportsWithKeyword):
-    def __init__(self, name: Optional[str], server: LynqServerOrRelatedObjects | None = None, auto_prime_html: bool = True) -> None:
 
-        self.server: Any = server
+class AppObject(_SupportsWithKeyword):
+    def __init__(self, name: _Optional[str], server: _LynqServerOrRelatedObjects | None = None) -> None:
+        self.server: _Any = server
         self.name: str = f"{name}.html"
 
-        self.init_supported_tags(supported_tags_)
+        self.init_supported_tags(_supported_tags)
+
+        self.singular("<!DOCTYPE html>")
+        self.singular("<html>")
 
         self.aphtml: bool = auto_prime_html
 
@@ -24,8 +29,8 @@ class AppObject(SupportsWithKeyword):
         for tag in supported_tags:
             exec(f"self.{tag} = lambda args=None: self.tag({repr(tag)}, args or \"\")", {"self": self})
 
-    def tag(self, type_: str, args: Optional[str] = None) -> Any:
-        from lynq.pebl.tagobject import TagObject
+    def tag(self, type_: str, args: _Optional[str] = None) -> _Any:
+        from lynq._utils._pebl.tagobject import TagObject
 
         return TagObject(self.name.removesuffix(".html"), type_, args)
     
@@ -34,35 +39,31 @@ class AppObject(SupportsWithKeyword):
             file.write(ln + "\n")
     
     def __exit__(self, *_) -> None:
-        self.singular("</html>") if self.aphtml else None
+        self.singular("</html>")
 
         self.pass_to_server()
     
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.error("Cannot pass pebl script to server when no server was provided.")
+            _logger.error("Cannot pass pebl script to server when no server was provided.")
             raise
 
-        logger.info(f"Passed {self.name} pebl script to {type(self.server).__name__}")
+        _logger.info(f"Passed {self.name} pebl script to {type(self.server).__name__}")
 
-        launch(self.server)
+        _launch(self.server)
 
-        logger.info("Continuing in pebl app to clear cache.")
-        os.remove("index.html")
+        _logger.info("Continuing in pebl app to clear cache.")
+        _os.remove("index.html")
 
-    def prime_html(self) -> None:
-        self.singular("<!DOCTYPE html>")
-        self.singular("<html>")
+class app:
+    def __init__(self, server: _Optional[_LynqServerOrRelatedObjects] = None) -> None:
+        self.server: _Optional[_LynqServerOrRelatedObjects] = server
 
-        self.aphtml = True
-
-def appnode(server: LynqServerOrRelatedObjects | None = None) -> Callable:
-    def wrapper(fn: Callable) -> Callable:
-        def wrapper2(*args: Any, **kwargs: Any) -> Any:
-            app: AppObject = AppObject(fn.__name__, server)
-            try: return fn(app, *args, **kwargs)
-            finally: app.pass_to_server()
+    def export(self, fn: _Callable) -> _Callable:
+        def wrapper(*args: _Any, **kwargs: _Any) -> _Any:
+            app_: AppObject = AppObject(fn.__name__, self.server)
+              
+            try: return fn(app_, *args, **kwargs)
+            finally: app_.pass_to_server()
         
-        return wrapper2
-        
-    return wrapper
+        return wrapper

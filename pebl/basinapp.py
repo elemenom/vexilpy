@@ -1,16 +1,10 @@
-from typing import Callable, Any
+from typing import Callable as _Callable
+from typing import Any as _Any
 
-from lynq.pebl.app import AppObject
+from lynq.pebl.app import AppObject as _AppObject
+from lynq.pebl.app import app as _app
 
-from lynq.basinserver import BasinLynqServer
+from lynq.server.basin import BasinLynqServer as _BasinLynqServer
 
-def basinappnode(path: str | None = None) -> Callable:
-    def wrapper(fn: Callable) -> Callable:
-        def wrapper2(*args: Any, **kwargs: Any) -> Any:
-            app: AppObject = AppObject(fn.__name__, BasinLynqServer(path))
-            try: return fn(app, *args, **kwargs)
-            finally: app.pass_to_server()
-        
-        return wrapper2
-        
-    return wrapper
+def basinapp(path: str | None = None) -> _Callable:
+    return _app(_BasinLynqServer(path))

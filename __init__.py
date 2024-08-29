@@ -1,22 +1,35 @@
-import atexit
-import os
-import logging
+import atexit as _atexit
+import os as _os
+import logging as _logging
 
-from lynq.logger import logger
+from lynq._utils._lynq.pycache_remover import remove_pycache_from as _remove_pycache_from
+from lynq._utils._lynq.pycache_remover import PYCACHE_REMOVAL_LOCATIONS as _pycache_removal_locations
 
-def clean_up() -> None:
-    handlers: list[logging.Handler] = logger.handlers
+from lynq._config import GLOBAL_LOGGER as _logger
+from lynq._config import CLEAN_CACHE as _clean_cache
 
-    logging.shutdown()
+def _clean_up() -> None:
+    handlers: list[_logging.Handler] = _logger.handlers
 
-    if os.path.exists("lynq.log"):
-        os.remove("lynq.log")
+    _logging.shutdown()
 
-def at_exit_func() -> None:
-    logger.info("Nearing program end, commencing clean up process.")
+    if _os.path.exists("lynq.log"):
+        _os.remove("lynq.log")
+
+def _clean_up_cache() -> None:
+    _logger.debug("Commencing pycache clean up process.")
+
+    for path in _pycache_removal_locations:
+        _remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
+
+def _at_exit_func() -> None:
+    _logger.debug("Commencing clean up process.")
     
-    clean_up()
+    if _clean_cache:
+        _clean_up_cache()
+
+    _clean_up()
 
     print(f"[Exiting...] Program ended successfully. All active servers terminated.")
 
-atexit.register(at_exit_func)
+_atexit.register(_at_exit_func)
