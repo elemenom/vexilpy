@@ -1,12 +1,11 @@
-from typing import Optional
+from typing import Optional as _Optional
+from typing import Callable as _Callable
 
-from lynq.lynqserverorrelated import LynqServerOrRelatedObjects
-from lynq.server import LynqServer
-from lynq.customserver import ConfigurableLynqServer
+from lynq._utils._lynq.lynqserverorrelated import LynqServerOrRelatedObjects as _LynqServerOrRelatedObjects
+from lynq.server.standard import LynqServer as _LynqServer
+from lynq.server.custom import ConfigurableLynqServer as _ConfigurableLynqServer
 
-def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> None:
-    server: LynqServer = LynqServer(port or 8000, directory or ".")
-
+def launch(server: _LynqServerOrRelatedObjects) -> _LynqServerOrRelatedObjects:
     try:
         server.open()
         input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")
@@ -14,10 +13,14 @@ def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) ->
     finally:
         server.close()
 
-def launch(server: LynqServerOrRelatedObjects):
-    try:
-        server.open()
-        input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")
+        return server
 
-    finally:
-        server.close()
+def directlaunch(port: _Optional[int] = None, directory: _Optional[str] = None) -> _LynqServer:
+    server: _LynqServer = _LynqServer(port or 8000, directory or ".")
+
+    return launch(server)
+
+def shallow(launch_method: _Callable) -> None:
+    server: _LynqServerOrRelatedObjects = launch_method()
+
+    

@@ -815,10 +815,10 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 
 **The directlaunch function is a rename of the OG launch function, which has been repurposed to run already created servers with the same treatement as directlaunched ones**
 
-> Hey! This is Enji! I hope you enjoy this new release of Lynq for Python. As you may know, this is an entirely solo open-source project I've been working on.
+> Hey! This is Elekk! I hope you enjoy this new release of Lynq for Python. As you may know, this is an entirely solo open-source project I've been working on.
 > If you have __any__ issues, suggestions, or feedback, please open an issue!
 
-# New features in Lynq v3.0.0 for Python
+# New features in Lynq v3
 
 - Bug fixes
 - P.E.B.L has default supported tags; so instead of `app.tag("html", "arguments")`, you can write `app.html("arguments")`
@@ -831,7 +831,7 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 - Warn count has been removed
 - Other QoL changes
 
-# New features in Lynq v4.0.0 for Python
+# New features in Lynq v4
 - Bug fixes
 - Support for Basin config files
 - Various improvements and updates to the README.md file
@@ -843,19 +843,72 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 - Global type for all LynqServer-like objects: `LynqServerOrRelatedObjects` from `lynq.lynqserverorrelated` 
 - The pizza is in the oven :>
 
-# BetterPebl (branch)
-- Improves performance of P.E.B.L
-- Fixes some P.E.B.L related bugs
-- Makes coding P.E.B.L easier by removing the need for the initial `<!DOCTYPE html>` singular and `html` tags.
-- P.E.B.L `appnode`s are now ran using the `export` function from `lynq.pebl.export`
-- P.E.B.L `appnode`s are faster and parsed efficiently using exportable functions
+# New features in Lynq v5
 
-## Pull Later (ignore this):
-- New file exportablefunction.py
-- New file export.py
-- Move supportswith.py to lynq/
-- readme.md
-- app.py
-- exportablefunction.py
-- export.py
-- 
+## Changelog
+
+- MANY bug fixes
+- Imports in backend files are now harder to get confused by
+- Performance enhancements
+- More Basin features
+- BetterPebl 1 and 2 are fullt implemented
+- Cool changes
+- P.E.B.L and Basin apps are supercharged with new features and are now created using the `@app() .export` and `@basinapp() .export` decorators respectively.
+
+## lynqconfig
+
+- You can now create a file in the same directory as the importing file(s) (the file(s) that are importing lynq) which will change some properties of how lynq works.
+- Make sure to include ALL options or lynq will use defaults for everything. Any options you don't want to modify, just set them to None.
+
+```python
+# lynqconfig.py
+
+import logging
+
+LOGGER = None
+# This can be a logger object or 'None' for default logger.
+
+LOGGINGCONFIG = {
+    "filename": "mylog.log"
+}
+# Additional arguments for the default logger. 'LOGGER' must be 'None' for this to take effect.
+
+LOGGINGLEVEL = logging.DEBUG
+# Modify the 'level' argument for the default logger. 'LOGGER' must be 'None' for this to take effect.
+
+LOGGINGFORMAT = "%(asctime)s, %(levelname)s, %(message)s"
+# Modify the 'format' argument for the default logger. 'LOGGER' must be 'None' for this to take effect.
+
+CLEANPYCACHE = False
+# This is a new feature in lynq v5. Lynq can now automatically remove all __pycache__ files in the lynq directory. This makes development much easier as it removes the need for manual deletion. Leaving this off might make lynq run slightly faster. Default is 'False'.
+```
+
+- More options will be added in the future.
+- You can also clean pycache from lynq manually by running `python -m lynq._utils._lynq.manualcleanup` in your command terminal.
+
+## _config
+
+- `_config.py` is the backend file that manages `lynqconfig.py` and the entire logging system. It is not importable*
+
+*learn more at the 'what are _ prefixes' section.
+
+## _utils
+
+- `_utils` is like the closet of useful stuff lynq uses to run how it does. It is not importable*
+
+*learn more at the 'what are _ prefixes' section.
+
+## what are _ prefixes
+
+- If something from lynq is prefixed with '_', this can be an item from a file (for ex. function or variable), it is not importable, which means you should ***not*** import them to your own projects. These items could potentially harm your computer if they aren't handled properly, and it's overall a bad idea and unintended to import them.
+
+## VERSION.md
+
+Just a short markdown file indicating the current running lynq version and how to upgrade.
+
+## Where the heck is `lynq/server.py`???
+
+- All server-related files (`server`, `customserver` and `basinserver`) have been moved to the `lynq.server` **package**.
+- `lynq.server` is now located in `lynq.server.standard`
+- `lynq.customserver` is now located in `lynq.server.custom`
+- `lynq.basinserver` is now located in `lynq.server.basin`
