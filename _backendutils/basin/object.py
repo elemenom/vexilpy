@@ -1,19 +1,19 @@
-from typing import Self as _Self
-from typing import Any as _Any
+from typing import Self
+from typing import Any
 
-type _BasinReturnObject = dict[str, _Any]
+from lynq._backendutils.basin.basinreturnobject import BasinReturnObject
 
 class BasinObject:
     def __init__(self, path: str | None = None) -> None:
         self.path: str = path or "config.bsn"
 
-    def set_path(self, path: str | None = None) -> _Self:
+    def set_path(self, path: str | None = None) -> Self:
         self.path = path or "config.bsn"
 
         return self
     
-    def read_whole(self) -> _BasinReturnObject:
-        o: _BasinReturnObject = {}
+    def read_whole(self) -> BasinReturnObject:
+        o: BasinReturnObject = {}
 
         with open(self.path) as file:
             for ln in [i.strip() for i in file.read().split("\n")]:
@@ -24,7 +24,7 @@ class BasinObject:
 
         return o
     
-    def read_line(self, number: int) -> _BasinReturnObject:
+    def read_line(self, number: int) -> BasinReturnObject:
         with open(self.path) as file:
             c: str = file.readline(number).strip()
             return {c[0]: eval(c[1])}

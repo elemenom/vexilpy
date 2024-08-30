@@ -1,5 +1,6 @@
 # lynq
 
+
 Lynq for Python is an open-source python framework that allows developers to host servers absurdly easily
 (we're talking 1-line easily)
 And this isn't even an exaggeration! Once you have Lynq imported, the world is basically in your hands.
@@ -653,7 +654,7 @@ import sys
 You can configure logging to output to an external terminal by using the `StreamHandler` provided by Python's `logging` module. This handler can be set up to write log messages to `sys.stdout`, which is the standard output stream often connected to the terminal.
 
 ```python
-def setup_logging():
+def setuplogging():
     # Create a logger
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)  # Set the root logger level
@@ -676,7 +677,7 @@ After setting up logging, you can use the logger in your application code to log
 
 ```python
 def main():
-    setup_logging()
+    setuplogging()
     
     logger = logging.getLogger(__name__)
     
@@ -692,7 +693,7 @@ if __name__ == "__main__":
 
 #### 3. **Customizing Log Output**
 
-You can further customize the logging output by modifying the `Formatter` in the `setup_logging` function. For example, you can include additional information like module names or line numbers.
+You can further customize the logging output by modifying the `Formatter` in the `setuplogging` function. For example, you can include additional information like module names or line numbers.
 
 ##### Example Formatter Customization
 
@@ -715,8 +716,8 @@ python your_script.py
 ### Troubleshooting
 
 - **No Logs Appearing**: Ensure that the terminal or console you are using is configured correctly to display standard output.
-- **Incorrect Log Levels**: Verify that the logging levels set in `setup_logging` match the levels you are using in your code.
-- **Formatting Issues**: If log messages appear incorrectly formatted, check the `Formatter` configuration in the `setup_logging` function.
+- **Incorrect Log Levels**: Verify that the logging levels set in `setuplogging` match the levels you are using in your code.
+- **Formatting Issues**: If log messages appear incorrectly formatted, check the `Formatter` configuration in the `setuplogging` function.
 
 ### Summary
 
@@ -815,7 +816,7 @@ The `directlaunch` and `launch` functions provide straightforward methods for st
 **The directlaunch function is a rename of the OG launch function, which has been repurposed to run already created servers with the same treatement as directlaunched ones**
 
 > Hey! This is Elekk! I hope you enjoy this new release of Lynq for Python. As you may know, this is an entirely solo open-source project I've been working on.
-> If you have __any__ issues, suggestions, or feedback, please open an issue!
+> If you have _Any__ issues, suggestions, or feedback, please open an issue!
 
 # New features in Lynq v3
 
@@ -912,7 +913,54 @@ Just a short markdown file indicating the current running lynq version and how t
 - `lynq.customserver` is now located in `lynq.server.custom`
 - `lynq.basinserver` is now located in `lynq.server.basin`
 
-> Hey! Me again, Elekk. As you may know, I do Lynq completely solo as a hobby. I don't sell anything, nor do I have a Patreon or something.
-> I do this so really cool programmers like you can do their programming easier, smooth as butter.
-> The only thing is, please don't claim Lynq as your own work. It's open-source, free, with no questions asked. All I'm asking for
-> is some credit in your work so I can get Lynq out to more people. Thank you for reading and have a nice rest of your day!!
+# New features in Lynq v6
+
+## Changelog
+
+- Lynq is A LOT more memory-efficient
+- Less files for navigation
+- All servers (`LynqServer`, `ConfigurableLynqServer` and `BasinLynqServer`) are now all in one module: `lynq.server`
+- `app` and `basinapp` can now both be accessed in the `lynq.app` module
+
+## Complete reworking of PEBL apps
+- PEBL apps have been reworked and are much more object oriented now.
+
+### Defining a PEBL app
+```python
+# index.py
+
+from lynq.app import app
+from lynq.server import LynqServer
+
+@app(LynqServer(
+    port=8000,
+    directory="./"
+)) .export .standard
+def my_pebl_app(self, name: str, age: int) -> None:
+    with self.head() as head:
+        ... # Code here
+
+    with self.body() as body:
+        with body.p() as p:
+            p.singular("Your name is {}, you are {} years old.".format(name, age))
+```
+
+In the above example, we create an app called `index`.
+
+**DISCLAIMER: The name of the function/app DOES matter! It defines the name of your app, and therefore the HTML file assigned to it. It is recomended to use `index` for your main app. The name of the python file does not impact anything.**
+
+Now we have an app, but how do we pass it to it's server?
+
+*Spoiler: This has also been reworked*
+
+```python
+# main.py
+
+from index import index
+
+index(name="Bob", age=20) .launch()
+```
+
+#### How it works:
+- The decorator `app` and `basinapp` are classes, so passing the server or basin path respectively are actually passed to `app.__init__`. Then, `app.export` is a custom "Shallow Blank Slate Object" (SBSO) which is also a memory-efficient way to store small classes in memory. After `export` is the "Export Method". Export methods change the way your PEBL app displays. The only export method implemented in Lynq PEBL so far is `standard`. This implements elements normally, like everyone is used to. More export methods will be implemented later on.
+- In the `main.py` file, the `index` function is imported, but it's no longer a function because of the decorator. What we're calling `.launch()` on is actually a `StandardAppExportObject`; an object in charge of passing your apps to their dedicated `LynqServer` in Lynq v6.
