@@ -23,7 +23,7 @@ import logging
 
 from typing import Any, Final
 
-VERSION: Final[float] = 7.8
+VERSION: Final[float] = 7.9
 
 # GIT BASH ONLY
 # rm -rf dist build *.egg-info; python setup.py sdist bdist_wheel; twine upload dist/*

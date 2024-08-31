@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: lynq
-Version: 7.8
+Version: 7.9
 Summary: Hosting local servers easily, smooth as butter.
 Home-page: https://github.com/elemenom/lynq
 Author: Elekk (elemenom)
@@ -189,7 +189,7 @@ The `ConfigurableLynqServer` class offers a flexible way to configure and run an
 
 # `LynqServer` Class Documentation
 
-The `LynqServer` class provides a basic, customizable HTTP server capable of serving files from a specified directory. It leverages Pythonâ€™s `http.server` and `socketserver` modules to handle HTTP requests and manage the serverâ€™s lifecycle. Below is a detailed explanation of its functionality and components.
+The `LynqServer` class provides a basic, customizable HTTP server capable of serving files from a specified directory. It leverages Python’s `http.server` and `socketserver` modules to handle HTTP requests and manage the server’s lifecycle. Below is a detailed explanation of its functionality and components.
 
 ## Overview
 
@@ -198,7 +198,7 @@ The `LynqServer` class is designed to facilitate the creation and management of 
 - Initialize the server with a specific port and directory.
 - Create a custom request handler.
 - Start and stop the server.
-- Automatically open a web browser pointing to the serverâ€™s URL.
+- Automatically open a web browser pointing to the server’s URL.
 
 ### Class Definition
 
@@ -284,7 +284,7 @@ This private method creates and returns a custom request handler class based on 
 
 #### Functionality
 
-- **Path Translation**: The `translate_path` method is overridden to clean the URL path by removing query parameters and fragments. It then combines the cleaned path with the serverâ€™s base directory to determine the absolute file path to be served.
+- **Path Translation**: The `translate_path` method is overridden to clean the URL path by removing query parameters and fragments. It then combines the cleaned path with the server’s base directory to determine the absolute file path to be served.
 
 ### `_start_server() -> None`
 
@@ -417,7 +417,7 @@ In this example:
 
 ### Summary
 
-The `launch` function provides a convenient way to start and manage a `LynqServer` instance with minimal code. It handles the serverâ€™s lifecycle, from initialization to shutdown, and includes user interaction to control when the server should stop running. This makes it an ideal entry point for scripts that need to quickly start a basic HTTP server.
+The `launch` function provides a convenient way to start and manage a `LynqServer` instance with minimal code. It handles the server’s lifecycle, from initialization to shutdown, and includes user interaction to control when the server should stop running. This makes it an ideal entry point for scripts that need to quickly start a basic HTTP server.
 
 **`launch()` is a great choice for beginners, or basically anybody who just wants to open a server really quickly and efficiently.**
 
@@ -439,7 +439,7 @@ The `InternetExplorerInstance` class provides a high-level interface for control
 
 ## Overview
 
-The `InternetExplorerInstance` class is designed to facilitate browser automation with Internet Explorer, using PowerShell scripts executed through Pythonâ€™s `subprocess` module. This class is particularly useful for scripting and testing environments where Internet Explorer is required.
+The `InternetExplorerInstance` class is designed to facilitate browser automation with Internet Explorer, using PowerShell scripts executed through Python’s `subprocess` module. This class is particularly useful for scripting and testing environments where Internet Explorer is required.
 
 ### Class Definition
 
@@ -683,7 +683,7 @@ Lynq 2.0 introduces an upgraded logging system that allows for more flexible and
 
 #### 1. **Initial Configuration**
 
-Lynq 2.0â€™s logging system can be configured using the `logging` module in Python. To set up logging to an external terminal, you need to configure the logging handlers appropriately.
+Lynq 2.0’s logging system can be configured using the `logging` module in Python. To set up logging to an external terminal, you need to configure the logging handlers appropriately.
 
 #### 2. **Configure Logging to an External Terminal**
 
@@ -768,7 +768,7 @@ python your_script.py
 
 ### Summary
 
-Lynq 2.0â€™s upgraded logging system provides a robust solution for directing log output to an external terminal, enhancing real-time monitoring and debugging capabilities. By configuring the `StreamHandler` to use `sys.stdout`, you can easily integrate logging into your terminal-based workflows and customize the logging output to meet your needs.
+Lynq 2.0’s upgraded logging system provides a robust solution for directing log output to an external terminal, enhancing real-time monitoring and debugging capabilities. By configuring the `StreamHandler` to use `sys.stdout`, you can easily integrate logging into your terminal-based workflows and customize the logging output to meet your needs.
 
 For more advanced configurations and additional features, refer to the [Python logging documentation](https://docs.python.org/3/library/logging.html) and explore Lynq's logging capabilities further.
 
