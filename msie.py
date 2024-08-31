@@ -1,1 +1,0 @@
-from lynq._backendutils.lynq.msie import InternetExplorerInstance
