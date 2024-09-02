@@ -23,7 +23,7 @@ import logging
 
 from typing import Any, Final
 
-VERSION: Final[float] = 7.9
+VERSION: Final[float] = 8.0
 
 # GIT BASH ONLY
 # rm -rf dist build *.egg-info; python setup.py sdist bdist_wheel; twine upload dist/*
@@ -50,14 +50,16 @@ try:
 
     from lynqconfig import CLEANLOGGER as cleanlogger # type: ignore
     from lynqconfig import CLEANPYCACHE as clean # type: ignore
-except ModuleNotFoundError:
+    from lynqconfig import CLEANLOGFILE as cleanlogfile # type: ignore
+except (ModuleNotFoundError, ImportError):
     logger, \
     additional, \
     level, \
     format_, \
     clean, \
-    cleanlogger \
-    = None, None, None, None, None, None
+    cleanlogger, \
+    cleanlogfile \
+    = None, None, None, None, None, None, None
 
 logging.basicConfig(
     level = eval(f"logging.{level}") if level else logging.DEBUG,
@@ -102,7 +104,7 @@ def _clean_up() -> None:
 
     logging.shutdown()
 
-    if os.path.exists("throwaway.log"):
+    if os.path.exists("throwaway.log") and cleanlogfile:
         os.remove("throwaway.log")
 
 def _clean_up_cache() -> None:

@@ -16,7 +16,6 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Optional
-from typing import Any
 
 from lynq._backendutils.app.app import app
 

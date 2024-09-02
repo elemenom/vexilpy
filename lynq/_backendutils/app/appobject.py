@@ -39,6 +39,8 @@ class AppObject(SupportsWithKeyword):
         self.on_run()
 
     def on_run(self) -> None:
+        logger.info("Please wait while we build your HTML file for you.")
+
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
 
@@ -57,6 +59,8 @@ class AppObject(SupportsWithKeyword):
     
     def __exit__(self, *_) -> None:
         self.singular("</html>")
+
+        logger.debug("Building has been finished successfully.")
 
         self.pass_to_server()
     

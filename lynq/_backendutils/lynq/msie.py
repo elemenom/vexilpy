@@ -16,7 +16,6 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from subprocess import run
-import logging
 from typing import Callable, Optional
 
 from lynq import GLOBAL_LOGGER as logger
