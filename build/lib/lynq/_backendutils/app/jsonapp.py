@@ -19,8 +19,8 @@ from typing import Optional
 
 from lynq._backendutils.app.app import app
 
-from lynq._backendutils.server.basin import BasinLynqServer
+from lynq._backendutils.server.json import JsonLynqServer
 
-class basinapp(app):
+class jsonapp(app):
     def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+        super().__init__(JsonLynqServer(path))

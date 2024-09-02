@@ -9,7 +9,7 @@ the Free Software Foundation, either version 3 of the License, or
 Lynq is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.0
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
@@ -17,10 +17,17 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Optional
 
-from lynq._backendutils.app.app import app
+from lynq._backendutils.app.appobject import AppObject
 
-from lynq._backendutils.server.basin import BasinLynqServer
+class TagObject(AppObject):
+    def __init__(self, name: str, tag: str, args: Optional[str] = None) -> None:
+        super().__init__(name)
 
-class basinapp(app):
-    def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+        self.tagstr: str = tag
+
+        self.singular(f"<{self.tagstr} {args or ""}>")
+
+    def on_run(self) -> None: ...
+
+    def __exit__(self, *_) -> None:
+        self.singular(f"</{self.tagstr}>")

@@ -9,7 +9,7 @@ the Free Software Foundation, either version 3 of the License, or
 Lynq is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.0
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
@@ -17,10 +17,10 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Optional
 
-from lynq._backendutils.app.app import app
+from lynq._backendutils.server.standard import LynqServer
+from lynq._backendutils.launcher.launch import launch
 
-from lynq._backendutils.server.basin import BasinLynqServer
+def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> LynqServer:
+    server: LynqServer = LynqServer(port or 8000, directory or ".")
 
-class basinapp(app):
-    def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+    return launch(server)

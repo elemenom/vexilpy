@@ -15,9 +15,10 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-import atexit, os, atexit
+import atexit, os
 
-from lynq._backendutils.lynq.pycache_remover import remove_pycache_from
+from lynq._backendutils.lynq.pycache_remover import remove_pycache_from as _remove_pycache_from
+from lynq._backendutils.protocol.server import start_server
 
 import logging
 
@@ -30,16 +31,16 @@ VERSION: Final[float] = 8.0
 
 PYCACHE_REMOVAL_LOCATIONS: tuple[str] = (
     "",
-    "app",
     "_backendutils",
-    "_backendutils.lynq",
     "_backendutils.app",
-    "_backendutils.server",
-    "_backendutils.launcher",
     "_backendutils.basin",
     "_backendutils.custom",
     "_backendutils.dependencies",
-    "_backendutils.dependencies.basin"
+    "_backendutils.dependencies.basin",
+    "_backendutils.launcher",
+    "_backendutils.lynq",
+    "_backendutils.protocol",
+    "_backendutils.server"
 )
 
 try:
@@ -111,7 +112,7 @@ def _clean_up_cache() -> None:
     GLOBAL_LOGGER.debug("Commencing pycache clean up process.")
 
     for path in PYCACHE_REMOVAL_LOCATIONS:
-        remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
+        _remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
 
 def _at_exit_func() -> None:
 

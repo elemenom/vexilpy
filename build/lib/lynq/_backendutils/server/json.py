@@ -9,18 +9,26 @@ the Free Software Foundation, either version 3 of the License, or
 Lynq is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.0
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Optional
+import json
 
-from lynq._backendutils.app.app import app
+from typing import Any
 
-from lynq._backendutils.server.basin import BasinLynqServer
+from lynq.server import LynqServer
 
-class basinapp(app):
-    def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+class JsonLynqServer(LynqServer):
+    def __init__(self, name: str) -> None:
+        from lynq.launcher import launch
+
+        with open(name) as file:
+            data: Any = json.load(file)
+
+        super().__init__(
+            port=data.get("port", 8000),
+            directory=data.get("directory", "./")
+        )

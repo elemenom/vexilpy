@@ -15,6 +15,7 @@ lynq/_backendutils/app/app.py
 lynq/_backendutils/app/appobject.py
 lynq/_backendutils/app/basinapp.py
 lynq/_backendutils/app/blankslateobject.py
+lynq/_backendutils/app/jsonapp.py
 lynq/_backendutils/app/standardappexportobject.py
 lynq/_backendutils/app/supportedtags.py
 lynq/_backendutils/app/supportswith.py
@@ -37,4 +38,5 @@ lynq/_backendutils/lynq/pycache_remover.py
 lynq/_backendutils/lynq/__pycache__/pycache_remover.cpython-312.pyc
 lynq/_backendutils/server/basin.py
 lynq/_backendutils/server/custom.py
+lynq/_backendutils/server/json.py
 lynq/_backendutils/server/standard.py

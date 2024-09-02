@@ -9,18 +9,20 @@ the Free Software Foundation, either version 3 of the License, or
 Lynq is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.0
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Optional
+from lynq._backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 
-from lynq._backendutils.app.app import app
+def launch(server: LynqServerOrRelatedObjects) -> LynqServerOrRelatedObjects:
+    try:
+        server.open()
+        input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")
 
-from lynq._backendutils.server.basin import BasinLynqServer
+    finally:
+        server.close()
 
-class basinapp(app):
-    def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+        return server
