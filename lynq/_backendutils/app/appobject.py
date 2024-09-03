@@ -66,7 +66,7 @@ class AppObject(SupportsWithKeyword):
     
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.error("Cannot pass pebl script to server when no server was provided.")
+            logger.fatal("Cannot pass pebl script to server when no server was provided.")
             raise
 
         logger.info(f"Passed {self.name} pebl script to {type(self.server).__name__}")
@@ -74,4 +74,5 @@ class AppObject(SupportsWithKeyword):
         launch(self.server)
 
         logger.info("Continuing in pebl app to clear cache.")
+
         os.remove("index.html")
