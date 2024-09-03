@@ -24,7 +24,7 @@ from lynq._backendutils.dependencies.basin.object import BasinObject
 
 from typing import Any, Final
 
-VERSION: Final[float] = 8.3
+from setup import VERSION
 
 # GIT BASH ONLY
 # rm -rf dist build *.egg-info; python setup.py sdist bdist_wheel; twine upload dist/*
@@ -119,6 +119,8 @@ logging.basicConfig(
 GLOBAL_LOGGER: Any = logger or logging.getLogger(__name__)
 CLEAN_CACHE: bool = clean or False
 CLEAN_LOGGER: bool = cleanlogger or True
+
+GLOBAL_LOGGER.info(f"Started instance of Lynq v{VERSION}")
 
 if warn:
     GLOBAL_LOGGER.error("An error occured in your lynqconfig PYTHON file. All config will be ignored (default will be used for everything). Make sure you include ALL configurements, and set them to `None` if you don't need to change them.")

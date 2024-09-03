@@ -26,6 +26,6 @@ class BasinLynqServer(LynqServer):
         basin: BasinObject = BasinObject(name)
 
         super().__init__(
-            port=getval("port", basin),
-            directory=getval("directory", basin)
+            port=getval("port", basin, 8000),
+            directory=getval("directory", basin, "./")
         )

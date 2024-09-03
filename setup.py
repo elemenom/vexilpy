@@ -1,5 +1,7 @@
+from typing import Final
 from setuptools import setup, find_packages
-from lynq import VERSION
+
+VERSION: Final[float] = 8.3
 
 setup(
     name="lynq",

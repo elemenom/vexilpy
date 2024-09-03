@@ -15,51 +15,100 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-import atexit, os, atexit
+import atexit, os, argparse, logging, json
 
-from lynq._backendutils.lynq.pycache_remover import remove_pycache_from
+from lynq._backendutils.lynq.pycache_remover import remove_pycache_from as _remove_pycache_from
 
-import logging
+from lynq._backendutils.dependencies.basin.getval import getval
+from lynq._backendutils.dependencies.basin.object import BasinObject
 
 from typing import Any, Final
 
-VERSION: Final[float] = 8.0
+from setup import VERSION
 
 # GIT BASH ONLY
 # rm -rf dist build *.egg-info; python setup.py sdist bdist_wheel; twine upload dist/*
 
+warn, warn2 = False, None
+
+parser: argparse.ArgumentParser = argparse.ArgumentParser(description="Basic config")
+
+parser.add_argument("--configfile", type=str, help="Path to your lynqconfig file.")
+parser.add_argument("--configtype", type=str, help="Type of your lynqconfig file. Supports 'JSON', 'BASIN' and 'PYTHON'")
+
+args: dict[str, Any] = parser.parse_args()
+
+match args.configtype:
+    case "JSON":
+        with open(args.configfile) as file:
+            data: dict[str, Any] = json.load(file)
+
+        logger = eval(data.get("logger", "None"))
+        additional = eval(data.get("loggingConfig", "None"))
+        level = data.get("loggingLevel", None)
+        format_ = data.get("loggingFormat", None)
+
+        cleanlogger = data.get("cleanLogger", "None")
+        clean = data.get("cleanPycache", "None")
+        cleanlogfile = data.get("cleanLogFile", "None")
+
+    case "BASIN":
+        data = BasinObject(args.configfile)
+
+        logger = eval(getval("logger", data))
+        additional = eval(getval("loggingConfig", data))
+        level = getval("loggingLevel", data)
+        format_ = getval("loggingFormat", data)
+
+        cleanlogger = eval(getval("cleanLogger", data, "None").title())
+        clean = eval(getval("cleanPycache", data, "None").title())
+        cleanlogfile = eval(getval("cleanLogFile", data, "None").title())
+
+    case "PYTHON":
+        try:
+            from lynqconfig import logger as logger # type: ignore
+            from lynqconfig import loggingConfig as additional # type: ignore
+            from lynqconfig import loggingLevel as level # type: ignore
+            from lynqconfig import loggingFormat as format_ # type: ignore
+
+            from lynqconfig import cleanLogger as cleanlogger # type: ignore
+            from lynqconfig import cleanPycache as clean # type: ignore
+            from lynqconfig import cleanLogFile as cleanlogfile # type: ignore
+        except (ModuleNotFoundError, ImportError):
+            logger, \
+            additional, \
+            level, \
+            format_, \
+            clean, \
+            cleanlogger, \
+            cleanlogfile \
+            = None, None, None, None, None, None, None
+
+            warn = True
+
+    case _:
+        logger, \
+        additional, \
+        level, \
+        format_, \
+        clean, \
+        cleanlogger, \
+        cleanlogfile \
+        = None, None, None, None, None, None, None
+
+        warn2 = True
+
 PYCACHE_REMOVAL_LOCATIONS: tuple[str] = (
     "",
-    "app",
     "_backendutils",
-    "_backendutils.lynq",
     "_backendutils.app",
-    "_backendutils.server",
-    "_backendutils.launcher",
     "_backendutils.basin",
     "_backendutils.custom",
     "_backendutils.dependencies",
-    "_backendutils.dependencies.basin"
+    "_backendutils.launcher",
+    "_backendutils.lynq",
+    "_backendutils.server"
 )
-
-try:
-    from lynqconfig import LOGGER as logger # type: ignore
-    from lynqconfig import LOGGINGCONFIG as additional # type: ignore
-    from lynqconfig import LOGGINGLEVEL as level # type: ignore
-    from lynqconfig import LOGGINGFORMAT as format_ # type: ignore
-
-    from lynqconfig import CLEANLOGGER as cleanlogger # type: ignore
-    from lynqconfig import CLEANPYCACHE as clean # type: ignore
-    from lynqconfig import CLEANLOGFILE as cleanlogfile # type: ignore
-except (ModuleNotFoundError, ImportError):
-    logger, \
-    additional, \
-    level, \
-    format_, \
-    clean, \
-    cleanlogger, \
-    cleanlogfile \
-    = None, None, None, None, None, None, None
 
 logging.basicConfig(
     level = eval(f"logging.{level}") if level else logging.DEBUG,
@@ -71,33 +120,14 @@ GLOBAL_LOGGER: Any = logger or logging.getLogger(__name__)
 CLEAN_CACHE: bool = clean or False
 CLEAN_LOGGER: bool = cleanlogger or True
 
-if not os.path.exists("lynqconfig.py"):
-    GLOBAL_LOGGER.warning("There has either been an error or you have not set up your lynqconfig.py file. Do you want to return it to the default state? By default nothing is changed and you'll still have the same experience using Lynq.")
-    while True:
+GLOBAL_LOGGER.info(f"Started instance of Lynq v{VERSION}")
 
-        i: str = input("[Y/n] ").lower()
+if warn:
+    GLOBAL_LOGGER.error("An error occured in your lynqconfig PYTHON file. All config will be ignored (default will be used for everything). Make sure you include ALL configurements, and set them to `None` if you don't need to change them.")
+    GLOBAL_LOGGER.error("PLEASE NOTE THAT IF THE CONFIG TYPE IS 'PYTHON', WE ALWAYS USE THE './lynqconfig.py' PATH; THE 'configfile' ARGUMENT IS IGNORED. * This does not apply to JSON and BASIN type lynqconfig files.")
 
-        if i.startswith("y"):
-            with open("lynqconfig.py", "w") as file:
-                file.write("""
-# Logging related config                       
-
-LOGGER = None
-LOGGINGCONFIG = None
-LOGGINGLEVEL = None
-LOGGINGFORMAT = None
-
-# Clean up related config
-
-CLEANLOGGER = None
-CLEANPYCACHE = None
-CLEANLOGFILE = None
-                    
-# See README.md for more info
-""")
-            break
-        elif i.startswith("n"):
-            break
+if warn2:
+    GLOBAL_LOGGER.error("No lynqconfig type provided in args.")
 
 def _clean_up() -> None:
     handlers: list[logging.Handler] = GLOBAL_LOGGER.handlers
@@ -111,7 +141,7 @@ def _clean_up_cache() -> None:
     GLOBAL_LOGGER.debug("Commencing pycache clean up process.")
 
     for path in PYCACHE_REMOVAL_LOCATIONS:
-        remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
+        _remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
 
 def _at_exit_func() -> None:
 
