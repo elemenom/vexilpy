@@ -21,7 +21,7 @@ from lynq._backendutils.app.app import app
 
 # CUSTOM
 
-from lynq._backendutils.custom.app import customapp
+from lynq._backendutils.app.custom import customapp
 
 # JSON
 

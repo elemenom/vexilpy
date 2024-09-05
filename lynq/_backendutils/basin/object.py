@@ -15,16 +15,15 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Self
-from typing import Any
+from typing import Self, Optional
 
 from lynq._backendutils.basin.basinreturnobject import BasinReturnObject
 
 class BasinObject:
-    def __init__(self, path: str | None = None) -> None:
+    def __init__(self, path: Optional[str] = None) -> None:
         self.path: str = path or "config.bsn"
 
-    def set_path(self, path: str | None = None) -> Self:
+    def set_path(self, path: Optional[str] = None) -> Self:
         self.path = path or "config.bsn"
 
         return self

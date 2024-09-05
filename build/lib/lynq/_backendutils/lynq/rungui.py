@@ -1,10 +1,11 @@
 from tkinter import Tk, Label, Entry, Button
 
-from lynq import GLOBAL_LOGGER as logger
+from typing import Any
 
 from lynq._backendutils.lynq.msie import pwsh
 
-def run_process(entry: Entry) -> None:
+def run_process(entry: Entry, logger: Any) -> None:
+
     text: str = entry.get()
 
     if text.startswith("lynq://app/"):
@@ -32,6 +33,8 @@ def run_process(entry: Entry) -> None:
         pwsh(f"start {text}")
 
 def run_gui() -> None:
+    from lynq import GLOBAL_LOGGER as logger
+
     logger.info("Building Lynq RUNGUI terminal instance.")
 
     root: Tk = Tk()
@@ -43,7 +46,7 @@ def run_gui() -> None:
     Label(root, text="Run a new process using Lynq").pack()
     entry: Entry = Entry(root, width=80)
     entry.pack(padx=10, pady=10)
-    Button(root, text="Submit", command=lambda: run_process(entry)).pack(pady=10)
+    Button(root, text="Submit", command=lambda: run_process(entry, logger)).pack(pady=10)
 
     logger.info("Completed build; launch sequence initiated.")
 

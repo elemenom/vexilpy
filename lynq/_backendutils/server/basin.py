@@ -15,14 +15,12 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from lynq.server import LynqServer
+from lynq._backendutils.server.standard import LynqServer
 from lynq._backendutils.dependencies.basin.object import BasinObject
 from lynq._backendutils.dependencies.basin.getval import getval
 
 class BasinLynqServer(LynqServer):
     def __init__(self, name: str) -> None:
-        from lynq.launcher import launch
-
         basin: BasinObject = BasinObject(name)
 
         super().__init__(

@@ -19,7 +19,7 @@ import json
 
 from typing import Any
 
-from lynq.server import LynqServer
+from lynq._backendutils.server.standard import LynqServer
 
 class JsonLynqServer(LynqServer):
     def __init__(self, name: str) -> None:

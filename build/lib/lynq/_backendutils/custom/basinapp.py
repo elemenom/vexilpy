@@ -18,9 +18,9 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 from typing import Optional
 from typing import Any
 
-from lynq._backendutils.custom.app import customapp
+from lynq._backendutils.app.custom import customapp
 
-from lynq.server import BasinLynqServer
+from lynq._backendutils.server.basin import BasinLynqServer
 
 class custombasinapp(customapp):
     def __init__(self, path: Optional[str] = None) -> None:

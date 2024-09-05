@@ -1,7 +1,7 @@
 from typing import Final
 from setuptools import setup, find_packages
 
-VERSION: Final[float] = 8.3
+VERSION: Final[float] = 8.4
 
 setup(
     name="lynq",

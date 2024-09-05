@@ -19,10 +19,6 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from lynq._backendutils.app.app import app
 
-# CUSTOM
-
-from lynq._backendutils.custom.app import customapp
-
 # JSON
 
 from lynq._backendutils.app.jsonapp import jsonapp
@@ -30,4 +26,3 @@ from lynq._backendutils.app.jsonapp import jsonapp
 # BASIN
 
 from lynq._backendutils.app.basinapp import basinapp
-from lynq._backendutils.custom.basinapp import custombasinapp

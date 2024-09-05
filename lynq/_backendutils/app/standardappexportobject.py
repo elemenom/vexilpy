@@ -13,12 +13,12 @@ class StandardAppExportObject(SupportsWithKeyword):
         self.kwargs: dict[str, Any] = kwargs
 
     def open(self) -> Any:
-        app: type[self.object] = self.object(self.app.fn.__name__, self.app.server)
-        try: return self.app.fn(app, *self.args, **self.kwargs)
-        finally: app.pass_to_server()
+        app_object: type[self.object] = self.object(self.app.fn.__name__, self.app)
+        try: return self.app.fn(app_object, *self.args, **self.kwargs)
+        finally: app_object.pass_to_server()
 
-    def init_postbuilding(self, type: Callable) -> None:
-        self.postb: Any = type(self.app.fn.__name__, self.app.server)
+    def init_postbuilding(self, type_: Callable) -> None:
+        self.postb: Any = type_(self.app.fn.__name__, self.app.server)
 
     def get_object_type(self) -> Any:
         return self.object
