@@ -21,8 +21,6 @@ from lynq._backendutils.dependencies.basin.getval import getval
 
 class BasinLynqServer(LynqServer):
     def __init__(self, name: str) -> None:
-        from lynq.launcher import launch
-
         basin: BasinObject = BasinObject(name)
 
         super().__init__(

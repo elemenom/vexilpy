@@ -29,7 +29,7 @@ class InternetExplorerInstance:
 
     def open(self) -> None:
         self.pwie("$ie.Visible = $true")
-        logger.info("Launched new internet explorer instance")
+        logger.info("Launched new internet explorer instance.")
 
     def navigate(self, link: Optional[str]) -> None:
         self.pwie(f"$ie.Navigate({repr(link) or "http://localhost"})")
