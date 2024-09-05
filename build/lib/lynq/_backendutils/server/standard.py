@@ -19,7 +19,6 @@ import http.server
 import socketserver
 import webbrowser
 import threading
-import logging
 from pathlib import Path
 from typing import Optional
 from typing import Type

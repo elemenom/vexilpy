@@ -1,11 +1,11 @@
 from typing import Final
 from setuptools import setup, find_packages
 
-VERSION: Final[float] = 8.4
+from sysver import SYSVER
 
 setup(
     name="lynq",
-    version=str(VERSION),
+    version=str(SYSVER),
     author="Elekk (elemenom)",
     author_email="pixilreal@gmail.com",
     description="Hosting local servers easily, smooth as butter.",

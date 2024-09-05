@@ -23,4 +23,4 @@ from lynq._backendutils.server.basin import BasinLynqServer
 
 class basinapp(app):
     def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path))
+        super().__init__(BasinLynqServer(path or "index.bsn"))

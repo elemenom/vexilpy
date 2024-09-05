@@ -15,8 +15,7 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Optional
-from typing import Callable
+from typing import Optional, Callable, Any
 
 from lynq._backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq._backendutils.app.appobject import AppObject
@@ -24,7 +23,13 @@ from lynq._backendutils.app.supportswith import SupportsWithKeyword
 from lynq._backendutils.app.blankslateobject import new
 
 class app(SupportsWithKeyword):
-    def __init__(self, server: Optional[LynqServerOrRelatedObjects] = None) -> None:
+    def __init__(self, server: Optional[LynqServerOrRelatedObjects] = None, style_path: Optional[str] = None) -> None:
+        from lynq._backendutils.style.style import StyledAppAttachment
+
+        self.style = new("StyledAppAttachmentWithAppAttribute", (StyledAppAttachment,), 
+            back = lambda _: self
+        )(style_path)
+
         super().__init__()
 
         self.server: Optional[LynqServerOrRelatedObjects] = server
@@ -54,10 +59,10 @@ class app(SupportsWithKeyword):
         return fn
     
     def export_direct(self, fn: Callable) -> None:
-        app: AppObject = AppObject(fn.__name__, self.server)
+        app: AppObject = AppObject(fn.__name__, self)
         try: return fn(app, *self.args, **self.kwargs)
         finally: app.pass_to_server()
     
     def export_nopass(self, fn: Callable) -> None:
-        app: AppObject = AppObject(fn.__name__, self.server)
+        app: AppObject = AppObject(fn.__name__, self)
         return fn(app, *self.args, **self.kwargs)

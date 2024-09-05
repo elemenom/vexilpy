@@ -19,9 +19,11 @@ from typing import Optional
 
 from lynq._backendutils.app.appobject import AppObject
 
+from lynq._backendutils.app.app import app as app_
+
 class TagObject(AppObject):
-    def __init__(self, name: str, tag: str, args: Optional[str] = None) -> None:
-        super().__init__(name)
+    def __init__(self, name: str, tag: str, app: app_, args: Optional[app_] = None) -> None:
+        super().__init__(name, app)
 
         self.tagstr: str = tag
 
