@@ -28,11 +28,20 @@ from lynq._backendutils.app.supportswith import SupportsWithKeyword
 from lynq._backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq._backendutils.app.supportedtags import supported_tags
 
-class AppObject(SupportsWithKeyword):
-    def __init__(self, name: Optional[str], server: Optional[LynqServerOrRelatedObjects] = None) -> None:
+from lynq._backendutils.style.style import StyledAppAttachment
 
-        self.server: Any = server
+class AppObject(SupportsWithKeyword):
+    def __init__(self, name: Optional[str], app: Any = None) -> None:
+        from lynq._backendutils.app.app import app as app_
+
+        self.server: Any = app.server
         self.name: str = f"{name}.html"
+
+        self.app: app_ | None = app
+
+        self.style_: StyledAppAttachment | None = app.style
+
+        self.new_stylesheet_path: str = f"{self.app.fn.__name__}.css"
 
         self.init_supported_tags(supported_tags)
 
@@ -43,15 +52,21 @@ class AppObject(SupportsWithKeyword):
 
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
+        self.singular(f"<link rel=\"stylesheet\" href=\"{self.new_stylesheet_path}\">")
 
     def init_supported_tags(self, supported_tags: list[str]) -> None:
         for tag in supported_tags:
-            exec(f"self.{tag} = lambda args = None: self.tag({repr(tag)}, args or \"\")", {"self": self})
+            exec(f"self.{tag} = lambda **args: self.tag({repr(tag)}, **args)", {"self": self})
 
-    def tag(self, type_: str, args: Optional[str] = None) -> Any:
+    def tag(self, type_: str, **kwargs: str | int) -> Any:
         from lynq._backendutils.app.tagobject import TagObject
 
-        return TagObject(self.name.removesuffix(".html"), type_, args)
+        final_kwargs = ""
+
+        for kwarg in list(kwargs.items()):
+            final_kwargs += f"{kwarg[0]}={kwarg[1]} "
+
+        return TagObject(self.name.removesuffix(".html"), type_, self.app, final_kwargs)
     
     def singular(self, ln: str) -> None:
         with open(self.name, "a") as file:
@@ -60,18 +75,31 @@ class AppObject(SupportsWithKeyword):
     def __exit__(self, *_) -> None:
         self.singular("</html>")
 
-        logger.debug("Building has been finished successfully.")
+        logger.info("Building has been finished successfully.")
 
         self.pass_to_server()
     
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.error("Cannot pass pebl script to server when no server was provided.")
-            raise
+            logger.fatal("Cannot pass pebl script to server when no server was provided.")
+            exit(1)
 
-        logger.info(f"Passed {self.name} pebl script to {type(self.server).__name__}")
+        logger.info(f"Passed '{self.name}' pebl script to host '{type(self.server).__name__}'")
+
+        if self.style is not None:
+            logger.info(f"Passed stylesheet '{self.new_stylesheet_path}' to pebl script '{self.name}'.")
+
+            self.style_.close()
 
         launch(self.server)
 
         logger.info("Continuing in pebl app to clear cache.")
-        os.remove("index.html")
+
+        try: os.remove(self.name)
+        except FileNotFoundError:
+            logger.warn(f"Could not find '{self.name}', so it cannot be cleaned.")
+
+        if self.style_ is not None:
+            try: os.remove(self.new_stylesheet_path)
+            except FileNotFoundError:
+                logger.warn(f"Could not find '{self.new_stylesheet_path}', so it cannot be cleaned.")

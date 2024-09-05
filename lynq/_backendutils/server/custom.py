@@ -22,7 +22,7 @@ import json
 import http.server
 import argparse
 
-from lynq.server import LynqServer
+from lynq._backendutils.server.standard import LynqServer
 from lynq import GLOBAL_LOGGER as logger
 
 class ConfigurableLynqServer(LynqServer):

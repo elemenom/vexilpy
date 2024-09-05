@@ -39,6 +39,8 @@ class AppObject(SupportsWithKeyword):
         self.on_run()
 
     def on_run(self) -> None:
+        logger.info("Please wait while we build your HTML file for you.")
+
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
 
@@ -58,11 +60,13 @@ class AppObject(SupportsWithKeyword):
     def __exit__(self, *_) -> None:
         self.singular("</html>")
 
+        logger.debug("Building has been finished successfully.")
+
         self.pass_to_server()
     
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.error("Cannot pass pebl script to server when no server was provided.")
+            logger.fatal("Cannot pass pebl script to server when no server was provided.")
             raise
 
         logger.info(f"Passed {self.name} pebl script to {type(self.server).__name__}")
@@ -70,4 +74,5 @@ class AppObject(SupportsWithKeyword):
         launch(self.server)
 
         logger.info("Continuing in pebl app to clear cache.")
+
         os.remove("index.html")

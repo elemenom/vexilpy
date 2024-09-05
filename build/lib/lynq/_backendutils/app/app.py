@@ -34,7 +34,8 @@ class app(SupportsWithKeyword):
     def _init_root(self) -> None:
         self.export = new("export", (), # Export methods here:
             standard = self.export_standard,
-            null = self.export_null,
+            void = self.export_void,
+            void_no_lambda = self.export_voidnolambda,
             direct = self.export_direct,
             dontpass = self.export_nopass
         )
@@ -46,14 +47,17 @@ class app(SupportsWithKeyword):
 
         return lambda *args, **kwargs: StandardAppExportObject(self, *args, object_=AppObject, **kwargs)
     
-    def export_null(self, fn: Callable) -> Callable:
+    def export_void(self, fn: Callable) -> Callable:
         return lambda *args, **kwargs: fn(*args, **kwargs)
     
+    def export_voidnolambda(self, fn: Callable) -> None:
+        return fn
+    
     def export_direct(self, fn: Callable) -> None:
-        app: AppObject = AppObject(fn.__name__, self.app.server)
+        app: AppObject = AppObject(fn.__name__, self.server)
         try: return fn(app, *self.args, **self.kwargs)
         finally: app.pass_to_server()
     
     def export_nopass(self, fn: Callable) -> None:
-        app: AppObject = AppObject(self.app.fn.__name__, self.app.server)
-        return self.app.fn(app, *self.args, **self.kwargs)
+        app: AppObject = AppObject(fn.__name__, self.server)
+        return fn(app, *self.args, **self.kwargs)

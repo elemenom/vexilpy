@@ -17,12 +17,14 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Union
 
-from lynq.server import LynqServer, ConfigurableLynqServer
-from lynq.server import BasinLynqServer
+from lynq._backendutils.server.standard import LynqServer
+from lynq._backendutils.server.custom import ConfigurableLynqServer
+from lynq._backendutils.server.basin import BasinLynqServer
+from lynq._backendutils.server.json import JsonLynqServer
 
 type LynqServerOrRelatedObjects = Union[
     LynqServer,
     ConfigurableLynqServer,
-    BasinLynqServer
-
+    BasinLynqServer,
+    JsonLynqServer
 ]

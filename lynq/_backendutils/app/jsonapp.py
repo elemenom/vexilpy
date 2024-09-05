@@ -23,4 +23,4 @@ from lynq._backendutils.server.json import JsonLynqServer
 
 class jsonapp(app):
     def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(JsonLynqServer(path))
+        super().__init__(JsonLynqServer(path or "index.json"))

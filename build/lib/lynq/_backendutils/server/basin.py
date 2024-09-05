@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from lynq.server import LynqServer
+from lynq._backendutils.server.standard import LynqServer
 from lynq._backendutils.dependencies.basin.object import BasinObject
 from lynq._backendutils.dependencies.basin.getval import getval
 
@@ -26,6 +26,6 @@ class BasinLynqServer(LynqServer):
         basin: BasinObject = BasinObject(name)
 
         super().__init__(
-            port=getval("port", basin),
-            directory=getval("directory", basin)
+            port=getval("port", basin, 8000),
+            directory=getval("directory", basin, "./")
         )
