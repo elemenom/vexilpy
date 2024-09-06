@@ -14,3 +14,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+def main() -> None:
+    from lynq import _clean_up_cache
+
+    _clean_up_cache()
+
+if __name__ == "__main__":
+    main()

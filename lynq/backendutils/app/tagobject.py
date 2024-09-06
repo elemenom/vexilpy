@@ -14,3 +14,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Optional
+
+from lynq.backendutils.app.appobject import AppObject
+
+from lynq.backendutils.app.app import app as app_
+
+class TagObject(AppObject):
+    def __init__(self, name: str, tag: str, app: app_, args: Optional[app_] = None) -> None:
+        super().__init__(name, app)
+
+        self.tagstr: str = tag
+
+        self.singular(f"<{self.tagstr} {args or ""}>")
+
+    def on_run(self) -> None: ...
+
+    def __exit__(self, *_) -> None:
+        self.singular(f"</{self.tagstr}>")

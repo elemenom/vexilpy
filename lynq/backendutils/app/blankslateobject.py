@@ -14,3 +14,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Callable
+from typing import Any
+
+def new(name: str, superclasses: tuple[Callable, ...], **items: Any) -> Callable:
+    return type(name, superclasses, items)

@@ -14,3 +14,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Any, Optional
+
+from lynq.backendutils.dependencies.basin.object import BasinObject
+
+def getval(key: str, basin: Optional[BasinObject] = None, path: Optional[str] = None, default: Any = None) -> Any:
+    return (basin or BasinObject(path)).read_whole().get(key, default)

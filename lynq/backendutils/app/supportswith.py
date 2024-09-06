@@ -14,3 +14,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Self
+
+class SupportsWithKeyword:
+    def __init__(self) -> None:
+        ...
+
+    def __enter__(self) -> Self:
+        return self
+    
+    def __exit__(self, *_) -> None:
+        ...

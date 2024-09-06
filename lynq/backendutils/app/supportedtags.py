@@ -14,3 +14,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+# separate with " "
+
+supported_tags: list[str] = \
+    "a abbr address article aside audio b bdi bdo blockquote body button canvas caption cite code colgroup data datalist dd details dfn dialog div dl dt em fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 head header i iframe ins kbd label legend li main map mark meter nav noscript object ol optgroup option output p picture pre progress q rp rt ruby s samp script section select small span strong style sub summary sup table tbody td template textarea tfoot th thead time title tr u ul var video" \
+.split(" ")

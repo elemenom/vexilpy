@@ -14,3 +14,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Union
+
+from lynq.backendutils.server.standard import LynqServer
+from lynq.backendutils.server.custom import ConfigurableLynqServer
+from lynq.backendutils.server.basin import BasinLynqServer
+from lynq.backendutils.server.json import JsonLynqServer
+
+type LynqServerOrRelatedObjects = Union[
+    LynqServer,
+    ConfigurableLynqServer,
+    BasinLynqServer,
+    JsonLynqServer
+]

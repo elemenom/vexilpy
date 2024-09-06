@@ -14,3 +14,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from lynq.backendutils.lynq.rungui import run_gui
+
+if __name__ == "__main__":
+    run_gui("<manual rungui>")

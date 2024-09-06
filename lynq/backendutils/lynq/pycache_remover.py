@@ -14,3 +14,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+import os
+
+def remove_pycache_from(path: str | None = None) -> None:
+    from lynq import GLOBAL_LOGGER as logger
+
+    path = f"{path.strip("/")}/__pycache__"
+
+    logger.debug(f"Now clearing cache in '{path}'")
+
+    try:
+        for item in [i for i in os.listdir(path) if i.endswith(".pyc")]:
+            os.remove(f"{path}/{item}")
+
+        os.rmdir(path)
+    except FileNotFoundError:
+        logger.warning(f"Could not find cache item in {path}")
+
+    else:
+        logger.info(f"Successfully cleared cache item in {path}")
