@@ -1,6 +1,6 @@
 from typing import Final, Any
 
-SYSVER: Final[float] = 9.1
+SYSVER: Final[float] = 9.2
 
 VERSION: Final[dict[str, float | int]] = {
     "whole": SYSVER,
@@ -10,10 +10,10 @@ VERSION: Final[dict[str, float | int]] = {
 
 INSTALL: Final[dict[str, str]] = {
     "pip": "pip install lynq",
-    "git": "git clone lynq"
+    "git": "git clone lynq --branch v10"
 }
 
 UPGRADE: Final[dict[str, str]] = {
     "pip": "pip install lynq --upgrade",
-    "git": "rm -rf ./*; git clone lynq"
+    "git": "rm -rf ./*; git clone lynq --branch v10"
 }
