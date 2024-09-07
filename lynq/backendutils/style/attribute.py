@@ -40,8 +40,9 @@ class StyleAttribute(SupportsWithKeyword):
 
         return self
 
-    def add_option(self, key: str, value: str) -> Self:
-        self._write_line(f"{key}: {value};")
+    def add_option(self, **kwargs) -> Self:
+        for key, value in list(kwargs.items()):
+            self._write_line(f"{key.replace("_", "-")}: {value};")
 
         return self
 

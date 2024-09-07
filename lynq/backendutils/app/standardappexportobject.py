@@ -30,7 +30,9 @@ class StandardAppExportObject(SupportsWithKeyword):
         self.kwargs: dict[str, Any] = kwargs
 
     def open(self) -> Any:
-        app_object: type[self.object] = self.object(self.app.fn.__name__, self.app)
+        app_object: Any = self.object(self.app.fn.__name__, self.app)
+        app_object.exit()
+
         try: return self.app.fn(app_object, *self.args, **self.kwargs)
         finally: app_object.pass_to_server()
 

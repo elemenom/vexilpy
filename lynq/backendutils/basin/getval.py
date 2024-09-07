@@ -17,7 +17,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Any, Optional
 
-from lynq.backendutils.dependencies.basin.object import BasinObject
+from lynq.backendutils.basin.object import BasinObject
 
 def getval(key: str, basin: Optional[BasinObject] = None, path: Optional[str] = None, default: Any = None) -> Any:
     return (basin or BasinObject(path)).read_whole().get(key, default)

@@ -15,5 +15,5 @@ INSTALL: Final[dict[str, str]] = {
 
 UPGRADE: Final[dict[str, str]] = {
     "pip": "pip install lynq --upgrade",
-    "git": "rm -rf ./*; git clone lynq --branch v10"
+    "git": "rm -rf lynq; git clone lynq --branch v10"
 }

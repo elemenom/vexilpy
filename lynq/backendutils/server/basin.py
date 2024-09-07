@@ -16,8 +16,8 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from lynq.backendutils.server.standard import LynqServer
-from lynq.backendutils.dependencies.basin.object import BasinObject
-from lynq.backendutils.dependencies.basin.getval import getval
+from lynq.backendutils.basin.object import BasinObject
+from lynq.backendutils.basin.getval import getval
 
 class BasinLynqServer(LynqServer):
     def __init__(self, name: str) -> None:
