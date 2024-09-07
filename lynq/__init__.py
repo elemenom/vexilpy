@@ -19,10 +19,10 @@ import atexit, os, argparse, logging, json
 
 from lynq.backendutils.lynq.pycache_remover import remove_pycache_from as _remove_pycache_from
 
-from lynq.backendutils.dependencies.basin.getval import getval
-from lynq.backendutils.dependencies.basin.object import BasinObject
+from lynq.backendutils.basin.getval import getval
+from lynq.backendutils.basin.object import BasinObject
 
-from typing import Any, Callable
+from typing import Any
 
 from sysver import VERSION, INSTALL, UPGRADE
 
@@ -192,6 +192,7 @@ from lynq.backendutils.server.json import JsonLynqServer
 from lynq.backendutils.server.basin import BasinLynqServer
 from lynq.backendutils.app.appobject import AppObject as App
 from lynq.backendutils.app.standardappexportobject import StandardAppExportObject as ExportedApp
+from lynq.backendutils.script.ctrl import CTRLScript
 
 if args.__getattribute__("lq.rungui"):
     from lynq.backendutils.lynq.rungui import run_gui

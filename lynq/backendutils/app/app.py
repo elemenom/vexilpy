@@ -54,15 +54,19 @@ class app(SupportsWithKeyword):
     
     def export_void(self, fn: Callable) -> Callable:
         return lambda *args, **kwargs: fn(*args, **kwargs)
-    
+
     def export_voidnolambda(self, fn: Callable) -> None:
         return fn
-    
+
     def export_direct(self, fn: Callable) -> None:
-        app: AppObject = AppObject(fn.__name__, self)
-        try: return fn(app, *self.args, **self.kwargs)
-        finally: app.pass_to_server()
+        app_object: AppObject = AppObject(fn.__name__, self)
+        app_object.exit()
+
+        try: return fn(app_object)
+        finally: app_object.pass_to_server()
     
     def export_nopass(self, fn: Callable) -> None:
-        app: AppObject = AppObject(fn.__name__, self)
-        return fn(app, *self.args, **self.kwargs)
+        app_object: AppObject = AppObject(fn.__name__, self)
+        app_object.exit()
+
+        return fn(app_object)

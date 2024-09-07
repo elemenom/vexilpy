@@ -27,6 +27,7 @@ from lynq.backendutils.launcher.launch import launch
 from lynq.backendutils.app.supportswith import SupportsWithKeyword
 from lynq.backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.backendutils.app.supportedtags import supported_tags
+from lynq.backendutils.script.ctrl import CTRLScript
 
 from lynq.backendutils.style.style import StyledAppAttachment
 
@@ -36,26 +37,29 @@ class AppObject(SupportsWithKeyword):
 
         self.server: Any = app.server
         self.name: str = f"{name}.html"
-
         self.app: app_ | None = app
-
         self.style_: StyledAppAttachment | None = app.style
-
         self.new_stylesheet_path: str = f"{self.app.fn.__name__}.css"
+        self.ctrl: CTRLScript | None = None
 
         self.init_supported_tags(supported_tags)
+        self.init_ctrlscript()
 
         self.on_run()
 
     def on_run(self) -> None:
-        logger.info("Please wait while we build your HTML file for you.")
+        logger.info("Please wait while we dist your HTML file for you.")
 
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
         self.singular(f"<link rel=\"stylesheet\" href=\"{self.new_stylesheet_path}\">")
+        self.singular(f"<script src=\"{self.app.fn.__name__}.js\"></script>")
 
-    def init_supported_tags(self, supported_tags: list[str]) -> None:
-        for tag in supported_tags:
+    def init_ctrlscript(self) -> None:
+        self.ctrl = CTRLScript(self.app.fn.__name__)
+
+    def init_supported_tags(self, supported_tags_: list[str]) -> None:
+        for tag in supported_tags_:
             exec(f"self.{tag} = lambda **args: self.tag({repr(tag)}, **args)", {"self": self})
 
     def tag(self, type_: str, **kwargs: str | int) -> Any:
@@ -64,7 +68,7 @@ class AppObject(SupportsWithKeyword):
         final_kwargs = ""
 
         for kwarg in list(kwargs.items()):
-            final_kwargs += f"{kwarg[0]}={kwarg[1]} "
+            final_kwargs += f"{kwarg[0]}=\"{kwarg[1]}\" "
 
         return TagObject(self.name.removesuffix(".html"), type_, self.app, final_kwargs)
     
@@ -73,11 +77,12 @@ class AppObject(SupportsWithKeyword):
             file.write(ln + "\n")
     
     def __exit__(self, *_) -> None:
+        self.exit()
+
+    def exit(self) -> None:
         self.singular("</html>")
 
         logger.info("Building has been finished successfully.")
-
-        self.pass_to_server()
     
     def pass_to_server(self) -> None:
         if self.server is None:
@@ -96,6 +101,10 @@ class AppObject(SupportsWithKeyword):
         logger.info("Continuing in pebl app to clear cache.")
 
         try: os.remove(self.name)
+        except FileNotFoundError:
+            logger.warn(f"Could not find '{self.name}', so it cannot be cleaned.")
+
+        try: os.remove(self.ctrl.path)
         except FileNotFoundError:
             logger.warn(f"Could not find '{self.name}', so it cannot be cleaned.")
 

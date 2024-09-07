@@ -92,6 +92,6 @@ def run_gui(id: Optional[str] = None) -> None:
     entry.pack(padx=10, pady=10)
     Button(root, text="Submit", command=lambda: run_process(entry.get(), logger, id)).pack(pady=10)
 
-    logger.info("Completed build; launch sequence initiated.")
+    logger.info("Completed dist; launch sequence initiated.")
 
     root.mainloop()
