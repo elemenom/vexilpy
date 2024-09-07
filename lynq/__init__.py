@@ -25,7 +25,7 @@ from lynq.backendutils.lynq.pycache_remover import remove_pycache_from as _remov
 from lynq.backendutils.basin.getval import getval
 from lynq.backendutils.basin.object import BasinObject
 
-SYSVER: Final[float] = 9.5
+SYSVER: Final[float] = 9.6
 
 VERSION: Final[dict[str, float | int]] = {
     "whole": SYSVER,
