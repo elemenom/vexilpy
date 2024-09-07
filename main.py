@@ -1,19 +1,16 @@
-from lynq import app, LynqServer, App
+from lynq import jsonapp, App
 
-@app(LynqServer(8000, "./")) .\
+@jsonapp("index.json") .\
 style .\
-    add_attribute("#button") .\
-        add_option(background_color="#000000") .\
-        add_option(color="#ffffff") .\
-        add_option(font_family="consolas") .\
+    add_attribute("#main-button") .\
+        add_option(background_color="black") .\
+        add_option(color="white") .\
         back() .\
     back() .\
-export .standard
+export.standard
 def index(self: App) -> None:
-    with self.ctrl.function("on_button_click"):
-        self.ctrl.line("console.log('Hello, world')")
+    with self.ctrl.function("on_button_click()"):
+        self.ctrl.line("console.log('Hello, world!!!!!!!!!!!!!!!!')")
 
-    with self.button(id="button", onclick="on_button_click()"):
-        self.singular("Hello, world!")
-
-index().open()
+    with self.button(id="main-button", onclick="on_button_click()"):
+        self.singular("Press me!")
