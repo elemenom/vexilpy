@@ -1,3 +1,22 @@
+"""
+This file is part of Lynq (elemenom/lynq).
+
+Lynq is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Lynq is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Lynq. If not, see <https://www.gnu.org/licenses/>.
+"""
+
+from typing import Generator
+
 from contextlib import contextmanager
 
 from lynq.backendutils.script.appendedfile import AppendedFile
@@ -9,7 +28,7 @@ class CTRLScript(AppendedFile):
         self.init_file(f"{name}.js")
 
     @contextmanager
-    def function(self, name: str, *args: str) -> None:
+    def function(self, name: str, *args: str) -> Generator:
         self.write(f"function {name}({", ".join(list(args))}) ""{")
 
         yield
@@ -17,7 +36,7 @@ class CTRLScript(AppendedFile):
         self.write("}")
 
     @contextmanager
-    def export_function(self, name: str, *args: str) -> None:
+    def export_function(self, name: str, *args: str) -> Generator:
         self.write(f"function {name}({", ".join(list(args))}) ""{")
 
         yield

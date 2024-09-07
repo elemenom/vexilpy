@@ -25,7 +25,7 @@ from lynq.backendutils.lynq.pycache_remover import remove_pycache_from as _remov
 from lynq.backendutils.basin.getval import getval
 from lynq.backendutils.basin.object import BasinObject
 
-SYSVER: Final[float] = 9.6
+SYSVER: Final[float] = 9.7
 
 VERSION: Final[dict[str, float | int]] = {
     "whole": SYSVER,
@@ -199,7 +199,8 @@ def main() -> None:
         "backendutils.launcher",
         "backendutils.lynq",
         "backendutils.server",
-        "backendutils.style"
+        "backendutils.style",
+        "backendutils.script"
     )
 
     logging.basicConfig(

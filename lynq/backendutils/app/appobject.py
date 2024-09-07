@@ -86,10 +86,10 @@ class AppObject(SupportsWithKeyword):
     
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.fatal("Cannot pass pebl script to server when no server was provided.")
+            logger.fatal("Cannot pass lynq app script to server when no server was provided.")
             exit(1)
 
-        logger.info(f"Passed '{self.name}' pebl script to host '{type(self.server).__name__}'")
+        logger.info(f"Passed '{self.name}' lynq app script to host '{type(self.server).__name__}'")
 
         if self.style is not None:
             logger.info(f"Passed stylesheet '{self.new_stylesheet_path}' to pebl script '{self.name}'.")
