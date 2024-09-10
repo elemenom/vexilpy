@@ -14,3 +14,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Callable, Any
+from lynq.backendutils.errors.handler import handle
+
+@handle
+def new(name: str, superclasses: tuple[type, ...], **items: Any) -> Callable:
+    return type(name, superclasses, items)

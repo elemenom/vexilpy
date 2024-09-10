@@ -14,3 +14,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
+
+@handle
+def launch(server: LynqServerOrRelatedObjects) -> LynqServerOrRelatedObjects:
+    try:
+        server.open()
+        input("\033[1;93mPress enter to exit your Lynq server...\n\033[0m")
+
+    finally:
+        server.close()
+
+    return server

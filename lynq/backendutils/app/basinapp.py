@@ -14,3 +14,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Optional
+from lynq.backendutils.errors.handler import handle
+
+from lynq.backendutils.app.app import WebApp
+from lynq.backendutils.server.basin import BasinServer
+
+class BasinWebApp(WebApp):
+    @handle
+    def __init__(self, path: Optional[str] = None) -> None:
+        super().__init__(BasinServer(path or "index.bsn"))
+
+@handle
+def basinapp(path: Optional[str] = None) -> BasinWebApp:
+    return BasinWebApp(path)
