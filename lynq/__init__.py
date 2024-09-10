@@ -140,7 +140,7 @@ from lynq.backendutils.basin.object import BasinObject
 
 from lynq.backendutils.lynq.logger import init_logger
 
-SYSVER: Final[float] = 10.0
+SYSVER: Final[float] = 10.1
 
 run: bool = True
 
