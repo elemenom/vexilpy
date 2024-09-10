@@ -14,3 +14,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Optional
+from lynq.backendutils.errors.handler import handle
+
+from lynq.backendutils.app.appobject import AppObject
+from lynq.backendutils.app.app import WebApp
+
+class TagObject(AppObject):
+    @handle
+    def __init__(self, name: str, tag: str, app: WebApp, args: Optional[WebApp] = None) -> None:
+        super().__init__(name, app)
+        self.tagstr: str = tag
+        self.singular(f"<{self.tagstr} {args or ''}>")
+
+    @handle
+    def on_run(self) -> None:
+        ...
+
+    @handle
+    def __exit__(self, *_) -> None:
+        self.singular(f"</{self.tagstr}>")

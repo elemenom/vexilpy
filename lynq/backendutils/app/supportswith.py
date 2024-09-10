@@ -14,3 +14,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Self
+from lynq.backendutils.errors.handler import handle
+
+class SupportsWithKeyword:
+    @handle
+    def __init__(self) -> None:
+        ...
+
+    @handle
+    def __enter__(self) -> Self:
+        return self
+
+    @handle
+    def __exit__(self, *_) -> None:
+        ...

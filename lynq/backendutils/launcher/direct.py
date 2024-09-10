@@ -14,3 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Optional
+from lynq.backendutils.errors.handler import handle
+
+from lynq.backendutils.server.standard import Server
+from lynq.backendutils.launcher.launch import launch
+
+@handle
+def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> Server:
+    server: Server = Server(port or 8000, directory or ".")
+    return launch(server)
