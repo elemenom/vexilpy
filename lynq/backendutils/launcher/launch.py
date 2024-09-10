@@ -15,8 +15,10 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
+from lynq.backendutils.errors.handler import handle
 from lynq.backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 
+@handle
 def launch(server: LynqServerOrRelatedObjects) -> LynqServerOrRelatedObjects:
     try:
         server.open()
@@ -25,4 +27,4 @@ def launch(server: LynqServerOrRelatedObjects) -> LynqServerOrRelatedObjects:
     finally:
         server.close()
 
-        return server
+    return server

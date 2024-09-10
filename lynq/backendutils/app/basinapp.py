@@ -9,18 +9,23 @@ the Free Software Foundation, either version 3 of the License, or
 Lynq is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.0
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Optional
+from lynq.backendutils.errors.handler import handle
 
-from lynq.backendutils.app.app import app
+from lynq.backendutils.app.app import WebApp
+from lynq.backendutils.server.basin import BasinServer
 
-from lynq.backendutils.server.basin import BasinLynqServer
-
-class basinapp(app):
+class BasinWebApp(WebApp):
+    @handle
     def __init__(self, path: Optional[str] = None) -> None:
-        super().__init__(BasinLynqServer(path or "index.bsn"))
+        super().__init__(BasinServer(path or "index.bsn"))
+
+@handle
+def basinapp(path: Optional[str] = None) -> BasinWebApp:
+    return BasinWebApp(path)

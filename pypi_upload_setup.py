@@ -19,6 +19,7 @@ setup(
     ],
     python_requires='>=3.12',
     license="GPLv3",
-    include_package_data=True
+    include_package_data=True,
+    install_requires=["simple-term-menu"]
 )
 README.close()

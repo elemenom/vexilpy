@@ -15,15 +15,17 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from lynq.backendutils.server.standard import LynqServer
+from lynq.backendutils.server.standard import Server
 from lynq.backendutils.basin.object import BasinObject
 from lynq.backendutils.basin.getval import getval
+from lynq.backendutils.errors.handler import handle
 
-class BasinLynqServer(LynqServer):
+class BasinServer(Server):
+    @handle
     def __init__(self, name: str) -> None:
         basin: BasinObject = BasinObject(name)
 
         super().__init__(
-            port=getval("port", basin, 8000),
-            directory=getval("directory", basin, "./")
+            port=getval("port", basin, default=8000),
+            directory=getval("directory", basin, default="./")
         )

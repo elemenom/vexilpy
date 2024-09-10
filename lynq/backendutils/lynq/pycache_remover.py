@@ -16,11 +16,18 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 import os
+from typing import Optional
+from lynq.backendutils.errors.handler import handle
 
-def remove_pycache_from(path: str | None = None) -> None:
-    from lynq import GLOBAL_LOGGER as logger
+@handle
+def remove_pycache_from(path: Optional[str] = None) -> None:
+    from lynq.backendutils.lynq.logger import logger
 
-    path = f"{path.strip("/")}/__pycache__"
+    if path is None:
+        logger.error("Please provide a Pycache removal location as arg 'path'.")
+        return
+
+    path = f"{path.strip('/')}/__pycache__"
 
     logger.debug(f"Now clearing cache in '{path}'")
 

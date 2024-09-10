@@ -19,9 +19,11 @@ import json
 
 from typing import Any
 
-from lynq.backendutils.server.standard import LynqServer
+from lynq.backendutils.server.standard import Server
+from lynq.backendutils.errors.handler import handle
 
-class JsonLynqServer(LynqServer):
+class JsonServer(Server):
+    @handle
     def __init__(self, name: str) -> None:
         with open(name) as file:
             data: Any = json.load(file)

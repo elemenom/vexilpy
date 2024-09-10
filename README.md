@@ -16,7 +16,7 @@ pip install lynq
 
 Using git:
 ```
-git clone https://github.com/elemenom/lynq.git --branch v10
+git clone https://github.com/elemenom/lynq.git
 ```
 
 **Upgrade**
@@ -30,15 +30,13 @@ pip install lynq --upgrade
 
 Using git:
 ```
-rm -rf lynq; git clone https://github.com/elemenom/lynq.git --branch v10
+rm -rf lynq; git clone https://github.com/elemenom/lynq.git
 ```
 
 **Links**
 
 - PyPI: https://pypi.org/project/lynq/
 - GitHub: https://github.com/elemenom/lynq/
-- GitHub branch v10: https://github.com/elemenom/lynq/tree/v10/
-- GitHub branch v10 Pull Request: https://github.com/elemenom/lynq/pull/27/
 
 **Author**
 
@@ -90,20 +88,32 @@ python myproject.py lq.cfile "" --lq.ctype "PYTHON"
 
 (i) The `lq.cfile` argument is ignored and can be blank when PYTHON is used as `lq.ctype`.
 
+**Lynq Error Handling**
+
+Lynq offers a total of 4 modes you can use to handle errors:
+- 'disable' (errors will not show and lynq will try to recover as best as it can)
+- 'legacy' (python's default error handling)
+- 'external (uses lynq's modern external window handling)
+- 'default' (default option when the argument isn't provided, provides a user-friendly error handling experience)
+
+To select a handling type,
+
+We recommend using the 'default' option.
+
 **Lynq Components**
 
 Lynq consists of several components that provide various functionalities. Some of the key components are:
 
 - `launch`: A module for launching web applications.
-- `directlaunch`: A module for launching web applications directly without having to explicitly define a `LynqServer`.
+- `directlaunch`: A module for launching web applications directly without having to explicitly define a `Server`.
 - `app`: An app decorator for managing web application objects.
 - `jsonapp`: An app decorator for managing web application objects using JSON.
 - `basinapp`: An app decorator for managing web application objects using BASIN.
 - `InternetExplorerInstance`: A class for managing Internet Explorer instances.
-- `LynqServer`: A class for managing standard Lynq servers.
-- `ConfigurableLynqServer`: A class for managing customizable Lynq servers.
-- `JsonLynqServer`: A class for managing Lynq servers using JSON.
-- `BasinLynqServer`: A class for managing Lynq servers using BASIN.
+- `Server`: A class for managing standard Lynq servers.
+- `ConfigurableServer`: A class for managing customizable Lynq servers.
+- `JsonServer`: A class for managing Lynq servers using JSON.
+- `BasinServer`: A class for managing Lynq servers using BASIN.
 - `App`: A class for representing web application objects.
 - `ExportedApp`: A class for representing exported web application objects.
 

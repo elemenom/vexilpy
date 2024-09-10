@@ -16,42 +16,43 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Self, Optional
+from lynq.backendutils.errors.handler import handle
 
 from lynq.backendutils.basin.basinreturnobject import BasinReturnObject
 
 class BasinObject:
+    @handle
     def __init__(self, path: Optional[str] = None) -> None:
         self.path: str = path or "config.bsn"
 
+    @handle
     def set_path(self, path: Optional[str] = None) -> Self:
         self.path = path or "config.bsn"
-
         return self
-    
+
+    @handle
     def read_whole(self) -> BasinReturnObject:
         o: BasinReturnObject = {}
 
         with open(self.path) as file:
-            for ln in [i.strip() for i in file.read().split("\n") if not i.startswith("//")]:
-                print(file.read())
+            lines = [i.strip() for i in file.read().split("\n") if not i.startswith("//")]
+            for ln in lines:
                 k, v = ln.strip().split("=", 1)
-
                 v = v.strip()
 
                 match v:
                     case "null":
                         v = "None"
-
                     case "true":
                         v = "True"
-
                     case "false":
                         v = "False"
 
-                o.update({k.strip(): eval(v.strip())})
+                o.update({k.strip(): eval(v)})
 
         return o
-    
+
+    @handle
     def read_line(self, number: int) -> BasinReturnObject:
         with open(self.path) as file:
             c: str = file.readline(number).strip()

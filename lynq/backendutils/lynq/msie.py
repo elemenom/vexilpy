@@ -17,24 +17,26 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from subprocess import run
 from typing import Callable, Optional
+from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.lynq.pwsh import pwsh
 
-from lynq import GLOBAL_LOGGER as logger
-
-def pwsh(cmd: str) -> None:
-    run(["powershell", "-Command", cmd])
+from lynq.backendutils.lynq.logger import logger
 
 class InternetExplorerInstance:
     def __init__(self) -> None:
         self.pwie: Callable = lambda cmd: pwsh(f"$ie = New-Object -ComObject \"InternetExplorer.Application\"; {cmd}")
 
+    @handle
     def open(self) -> None:
         self.pwie("$ie.Visible = $true")
         logger.info("Launched new internet explorer instance.")
 
+    @handle
     def navigate(self, link: Optional[str]) -> None:
-        self.pwie(f"$ie.Navigate({repr(link) or "http://localhost"})")
+        self.pwie(f"$ie.Navigate({repr(link) or 'http://localhost'})")
         logger.info(f"Navigated internet explorer into {link}")
 
+    @handle
     def refresh(self) -> None:
         self.pwie("$ie.Refresh()")
         logger.info("Refresh internet explorer")

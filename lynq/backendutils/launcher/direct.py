@@ -16,11 +16,12 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Optional
+from lynq.backendutils.errors.handler import handle
 
-from lynq.backendutils.server.standard import LynqServer
+from lynq.backendutils.server.standard import Server
 from lynq.backendutils.launcher.launch import launch
 
-def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> LynqServer:
-    server: LynqServer = LynqServer(port or 8000, directory or ".")
-
+@handle
+def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> Server:
+    server: Server = Server(port or 8000, directory or ".")
     return launch(server)
