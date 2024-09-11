@@ -156,7 +156,7 @@ if "pypi_upload_setup.py" in inspect.stack()[-1].filename:
 # ```
 # rm -rf dist build lynq.egg-info
 # python pypi_upload_setup.py sdist bdist_wheel
-# twine upload dist/*
+# twine upload dist/* --username __token__ --password
 # ```
 
 def main() -> None:
