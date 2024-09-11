@@ -19,11 +19,10 @@ from typing import Optional, Type
 from pathlib import Path
 import json
 import http.server
-import argparse
 
 from lynq.backendutils.server.standard import Server
-from lynq.backendutils.lynq.logger import logger
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.logger import logger
+from lynq.backendutils.safety.handler import handle
 
 class ConfigurableServer(Server):
     @handle
@@ -40,9 +39,9 @@ class ConfigurableServer(Server):
             with open(config_file, 'r') as f:
                 try:
                     config = json.load(f)
-                    logger.info(f"Loaded configuration from {config_file}")
+                    logger().info(f"Loaded configuration from {config_file}")
                     return config
                 except json.JSONDecodeError as e:
-                    logger.error(f"Error parsing config file: {e}")
+                    logger().error(f"Error parsing config file: {e}")
         else:
-            logger.warning(f"No valid config file found. Using default settings.")
+            logger().warning(f"No valid config file found. Using default settings.")

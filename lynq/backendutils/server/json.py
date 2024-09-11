@@ -20,7 +20,7 @@ import json
 from typing import Any
 
 from lynq.backendutils.server.standard import Server
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 class JsonServer(Server):
     @handle

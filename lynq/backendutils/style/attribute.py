@@ -15,10 +15,10 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Self, Any, Callable
-from lynq.backendutils.lynq.logger import logger
+from typing import Self, Any
+from lynq.backendutils.safety.logger import logger
 from lynq.backendutils.app.supportswith import SupportsWithKeyword
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 class StyleAttribute(SupportsWithKeyword):
     @handle
@@ -57,14 +57,14 @@ class StyleAttribute(SupportsWithKeyword):
         try:
             actions: dict[str, str] = cls.__style__
         except AttributeError:
-            logger.error(f"Error while parsing Lynq Style module '{cls.__name__}'.")
+            logger().error(f"Error while parsing Lynq Style module '{cls.__name__}'.")
             return
 
         for option, value in actions.items():
-            logger.info(f"Successfully parsed Lynq Style module '{cls.__name__}'.")
+            logger().info(f"Successfully parsed Lynq Style module '{cls.__name__}'.")
             self.safe_add_option(option, value)
 
-        logger.info(f"Successfully imported and included '{cls.__name__}'.")
+        logger().info(f"Successfully imported and included '{cls.__name__}'.")
 
     @handle
     def __exit__(self, *_) -> None:

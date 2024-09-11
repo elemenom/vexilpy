@@ -16,7 +16,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Optional
-from lynq.backendutils.lynq.logger import logger
+from lynq.backendutils.safety.logger import logger
 
 class AppendedFile:
     def __init__(self) -> None:
@@ -28,24 +28,24 @@ class AppendedFile:
 
     def write(self, cont: Optional[str] = None) -> None:
         if self.path is None:
-            logger.fatal("Cannot write to file appendant when file was not initialized.")
+            logger().fatal("Cannot write to file appendant when file was not initialized.")
             raise ValueError("File path is not initialized.")
 
         try:
             with open(self.path, "a") as file:
                 file.write((cont or "") + "\n")
         except IOError as e:
-            logger.error(f"Failed to write to file '{self.path}': {e}")
+            logger().error(f"Failed to write to file '{self.path}': {e}")
             raise
 
     def read(self) -> str:
         if self.path is None:
-            logger.fatal("Cannot read from file appendant when file was not initialized.")
+            logger().fatal("Cannot read from file appendant when file was not initialized.")
             raise ValueError("File path is not initialized.")
 
         try:
             with open(self.path) as file:
                 return file.read()
         except IOError as e:
-            logger.error(f"Failed to read from file '{self.path}': {e}")
+            logger().error(f"Failed to read from file '{self.path}': {e}")
             raise

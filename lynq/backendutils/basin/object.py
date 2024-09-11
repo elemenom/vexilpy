@@ -16,7 +16,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Self, Optional
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 from lynq.backendutils.basin.basinreturnobject import BasinReturnObject
 

@@ -17,19 +17,19 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 from typing import Optional
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 @handle
 def remove_pycache_from(path: Optional[str] = None) -> None:
-    from lynq.backendutils.lynq.logger import logger
+    from lynq.backendutils.safety.logger import logger
 
     if path is None:
-        logger.error("Please provide a Pycache removal location as arg 'path'.")
+        logger().error("Please provide a Pycache removal location as arg 'path'.")
         return
 
     path = f"{path.strip('/')}/__pycache__"
 
-    logger.debug(f"Now clearing cache in '{path}'")
+    logger().debug(f"Now clearing cache in '{path}'")
 
     try:
         for item in [i for i in os.listdir(path) if i.endswith(".pyc")]:
@@ -37,7 +37,7 @@ def remove_pycache_from(path: Optional[str] = None) -> None:
 
         os.rmdir(path)
     except FileNotFoundError:
-        logger.warning(f"Could not find cache item in {path}")
+        logger().warning(f"Could not find cache item in {path}")
 
     else:
-        logger.info(f"Successfully cleared cache item in {path}")
+        logger().info(f"Successfully cleared cache item in {path}")

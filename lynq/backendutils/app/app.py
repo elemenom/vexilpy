@@ -16,7 +16,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Optional, Callable
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 from lynq.backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.backendutils.app.appobject import AppObject
 from lynq.backendutils.app.supportswith import SupportsWithKeyword
@@ -54,7 +54,7 @@ class WebApp(SupportsWithKeyword):
 
         from lynq.backendutils.app.standardappexportobject import StandardAppExportObject
 
-        return lambda *args, **kwargs: StandardAppExportObject(self, *args, object_=AppObject, **kwargs)
+        return lambda *args, **kwargs: StandardAppExportObject(self, AppObject, *args, **kwargs)
 
     @handle
     def export_void(self, fn: Callable) -> Callable:

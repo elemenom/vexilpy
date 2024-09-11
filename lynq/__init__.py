@@ -128,23 +128,24 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-import atexit, os, argparse, logging, json
-import inspect
+import atexit, os, argparse, logging, inspect
 
-from typing import Any, Final, Callable
+from typing import Final
 
 from lynq.backendutils.lynq.pycache_remover import remove_pycache_from as _remove_pycache_from
 
 from lynq.backendutils.basin.getval import getval
 from lynq.backendutils.basin.object import BasinObject
 
-from lynq.backendutils.lynq.logger import init_logger
+from lynq.backendutils.safety.logger import init_logger
+from lynq.backendutils.yaml.loader import load_yaml_config
+from lynq.backendutils.yaml.validator import validate_config
 
-SYSVER: Final[float] = 10.1
+SYSVER: Final[float] = 10.2
 
 run: bool = True
 
-error_type: str | None = None
+print(inspect.stack()[-1].filename)
 
 # Checking if pypi_upload_setup.py is running this:
 if "pypi_upload_setup.py" in inspect.stack()[-1].filename:
@@ -155,92 +156,42 @@ if "pypi_upload_setup.py" in inspect.stack()[-1].filename:
 # rm -rf dist build lynq.egg-info; python pypi_upload_setup.py sdist bdist_wheel; twine upload dist/*
 
 def main() -> None:
-    warn, warn2 = False, False
-
-    _, _ = warn, warn2 # Bypass 'Redeclared unused variable' warning.
-
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description="Basic config")
 
-    parser.add_argument("--lq_cfile", type=str, help="Path to your lynqconfig file.")
-    parser.add_argument("--lq_ctype", type=str, help="Type of your lynqconfig file. Supports 'JSON', 'BASIN' and 'PYTHON'.")
+    parser.add_argument("-F", "--File", type=str, help="Path to your lynqconfig.yaml file.")
 
-    parser.add_argument("--lq_rungui", action="store_true", help="Start a new instance of Lynq RUNGUI and exit the program.")
-    parser.add_argument("--lq_clean", action="store_true", help="Clean pycache files and exit the program.")
+    parser.add_argument("--Rungui", action="store_true", help="Start a new instance of Lynq RUNGUI and exit the program.")
+    parser.add_argument("--Clean", action="store_true", help="Clean pycache files and exit the program.")
 
-    parser.add_argument("--lq_run_process", type=str, help="Run a process like from a Lynq RUNGUI, but presented directly from a CLI.")
-    parser.add_argument("--lq_errors", type=str, help="Choose how errors will display. "
-                                                      "Supports 'disable' (errors will not show and lynq will try to recover as best as it can), "
-                                                      "'legacy' (python's default error handling), "
-                                                      "'external (uses lynq's modern external window handling), "
-                                                      "'default' (default option when the argument isn't provided, provides a user-friendly error handling experience)"
-    )
+    parser.add_argument("--Run_Process", type=str, help="Run a process like from a Lynq RUNGUI, but presented directly from a CLI.")
 
     args, _ = parser.parse_known_args()
 
-    global error_type
+    with open(args.File or "lynqconfig.yaml", "r+") as file:
+        if file.read().strip() == "":
+            file.write("""
+logger:
+loggingConfig:
+loggingLevel:
+loggingFormat:
 
-    error_type = (args.__getattribute__("lq_errors") or "default").lower()
+cleanLogger:
+cleanPycache:
+cleanLogFile:
 
-    match args.__getattribute__("lq_ctype"):
-        case "JSON":
-            with open(args.__getattribute__("lq_cfile")) as file:
-                data: dict[str, Any] = json.load(file)
+safety:            
+""")
 
-            logger_ = eval(data.get("logger", "None"))
-            additional = eval(data.get("loggingConfig", "None"))
-            level = data.get("loggingLevel", None)
-            format_ = data.get("loggingFormat", None)
+    data = load_yaml_config(args.File or "lynqconfig.yaml")
 
-            cleanlogger = data.get("cleanLogger", "None")
-            clean = data.get("cleanPycache", "None")
-            cleanlogfile = data.get("cleanLogFile", "None")
+    logger_ = data.get("logger")
+    additional = data.get("loggingConfig")
+    level = data.get("loggingLevel")
+    format_ = data.get("loggingFormat")
 
-        case "BASIN":
-            basin_data: BasinObject = BasinObject(args.__getattribute__("lq_cfile"))
-
-            logger_ = eval(getval("logger", basin_data))
-            additional = eval(getval("loggingConfig", basin_data))
-            level = getval("loggingLevel", basin_data)
-            format_ = getval("loggingFormat", basin_data)
-
-            cleanlogger = eval(getval("cleanLogger", basin_data, "None").title())
-            clean = eval(getval("cleanPycache", basin_data, "None").title())
-            cleanlogfile = eval(getval("cleanLogFile", basin_data, "None").title())
-
-        case "PYTHON":
-            try:
-                from lynqconfig import logger as logger_ # type: ignore
-                from lynqconfig import loggingConfig as additional # type: ignore
-                from lynqconfig import loggingLevel as level # type: ignore
-                from lynqconfig import loggingFormat as format_ # type: ignore
-
-                from lynqconfig import cleanLogger as cleanlogger # type: ignore
-                from lynqconfig import cleanPycache as clean # type: ignore
-                from lynqconfig import cleanLogFile as cleanlogfile # type: ignore
-
-            except (ModuleNotFoundError, ImportError):
-                logger_, \
-                additional, \
-                level, \
-                format_, \
-                clean, \
-                cleanlogger, \
-                cleanlogfile \
-                = (None,) * 7
-
-                warn = True
-
-        case _:
-            logger_, \
-            additional, \
-            level, \
-            format_, \
-            clean, \
-            cleanlogger, \
-            cleanlogfile \
-            = None, None, None, None, None, None, None
-
-            warn2 = True
+    cleanlogger = data.get("cleanLogger")
+    clean = data.get("cleanPycache")
+    cleanlogfile = data.get("cleanLogFile")
 
     PYCACHE_REMOVAL_LOCATIONS: tuple[str, ...] = (
         "",
@@ -253,7 +204,9 @@ def main() -> None:
         "backendutils.lynq",
         "backendutils.server",
         "backendutils.style",
-        "backendutils.script"
+        "backendutils.script",
+        "backendutils.yaml",
+        "backendutils.safety"
     )
 
     logging.basicConfig(
@@ -264,39 +217,32 @@ def main() -> None:
 
     init_logger(logger_ or logging.getLogger(__name__))
 
-    from lynq.backendutils.lynq.logger import logger
+    from lynq.backendutils.safety.logger import logger
     
     CLEAN_CACHE: bool = clean or False
     CLEAN_LOGGER: bool = cleanlogger or True
 
-    logger.info(f"Started instance of Lynq {SYSVER}.")
+    logger().info(f"Started instance of Lynq {SYSVER}.")
 
-    if args.__getattribute__("lq_rungui"):
+    if args.Rungui:
         from lynq.backendutils.lynq.rungui import run_gui
 
         run_gui("<onstart rungui>")
 
         exit()
 
-    if args.__getattribute__("lq_clean"):
+    if args.Clean:
         for path in PYCACHE_REMOVAL_LOCATIONS:
             _remove_pycache_from(f"./lynq/{path.replace(".", "/")}")
 
         exit()
 
-    if args.__getattribute__("lq_run_process"):
+    if args.Run_Process:
         from lynq.backendutils.lynq.rungui import run_process
 
         run_process(args.__getattribute__("lq_run_process"), logger, "<terminal (ran using lynq CLI)>")
 
         exit()
-
-    if warn:
-        logger.error("An error occured in your lynqconfig PYTHON file. All config will be ignored (default will be used for everything). Make sure you include ALL configurements, and set them to `None` if you don't need to change them.")
-        logger.error("PLEASE NOTE THAT IF THE CONFIG TYPE IS 'PYTHON', WE ALWAYS USE THE './lynqconfig.py' PATH; THE 'configfile' ARGUMENT IS IGNORED. * This does not apply to JSON and BASIN type lynqconfig files.")
-
-    if warn2:
-        logger.error("None or invalid lynqconfig type provided in args, returned all options to their default values.")
 
     def _clean_up() -> None:
         logging.shutdown()
@@ -305,14 +251,14 @@ def main() -> None:
             os.remove("throwaway.log")
 
     def _clean_up_cache() -> None:
-        logger.debug("Commencing pycache clean up process.")
+        logger().debug("Commencing pycache clean up process.")
 
         for path_ in PYCACHE_REMOVAL_LOCATIONS:
             _remove_pycache_from(f"./lynq/{path_.replace(".", "/")}")
 
     def _at_exit_func() -> None:
 
-        logger.debug("Commencing logger deletion and clean up process.")
+        logger().debug("Commencing logger deletion and clean up process.")
 
         if CLEAN_CACHE:
             _clean_up_cache()
@@ -337,6 +283,9 @@ from lynq.backendutils.server.standard import Server
 from lynq.backendutils.server.custom import ConfigurableServer
 from lynq.backendutils.server.json import JsonServer
 from lynq.backendutils.server.basin import BasinServer
-from lynq.backendutils.app.appobject import AppObject
+from lynq.backendutils.app.appobject import AppObject as SelfApp
 from lynq.backendutils.app.standardappexportobject import StandardAppExportObject
 from lynq.backendutils.script.ctrl import CTRLScript
+from lynq.backendutils.server.yaml import YamlServer
+from lynq.backendutils.app.yamlapp import yamlapp
+from lynq.backendutils.app.remoteapp import rmtapp

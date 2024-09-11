@@ -15,12 +15,11 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from subprocess import run
 from typing import Callable, Optional
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 from lynq.backendutils.lynq.pwsh import pwsh
 
-from lynq.backendutils.lynq.logger import logger
+from lynq.backendutils.safety.logger import logger
 
 class InternetExplorerInstance:
     def __init__(self) -> None:
@@ -29,14 +28,14 @@ class InternetExplorerInstance:
     @handle
     def open(self) -> None:
         self.pwie("$ie.Visible = $true")
-        logger.info("Launched new internet explorer instance.")
+        logger().info("Launched new internet explorer instance.")
 
     @handle
     def navigate(self, link: Optional[str]) -> None:
         self.pwie(f"$ie.Navigate({repr(link) or 'http://localhost'})")
-        logger.info(f"Navigated internet explorer into {link}")
+        logger().info(f"Navigated internet explorer into {link}")
 
     @handle
     def refresh(self) -> None:
         self.pwie("$ie.Refresh()")
-        logger.info("Refresh internet explorer")
+        logger().info("Refresh internet explorer")

@@ -1,5 +1,5 @@
 from subprocess import run
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 @handle
 def pwsh(cmd: str) -> None:

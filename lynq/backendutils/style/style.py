@@ -17,7 +17,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Optional
 from lynq.backendutils.style.attribute import StyleAttribute
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 class StyledAppAttachment:
     @handle

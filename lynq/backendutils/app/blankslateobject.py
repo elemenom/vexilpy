@@ -16,8 +16,10 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import Callable, Any
-from lynq.backendutils.errors.handler import handle
+
+from lynq.backendutils.safety.handler import handle
 
 @handle
 def new(name: str, superclasses: tuple[type, ...], **items: Any) -> Callable:
+
     return type(name, superclasses, items)

@@ -22,21 +22,21 @@ import threading
 from pathlib import Path
 from typing import Optional, Type
 
-from lynq.backendutils.lynq.logger import logger
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.logger import logger
+from lynq.backendutils.safety.handler import handle
 
 class Server:
     @handle
-    def __init__(self, port: int, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
-        self.port: int = port
+    def __init__(self, port: Optional[int] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):
+        self.port: int = port or 8000
         self.directory: Path = Path(directory) if directory else Path.cwd()
         self.handler: Type[http.server.BaseHTTPRequestHandler] = handler or self._create_handler()
         try:
             self.httpd: socketserver.TCPServer = socketserver.TCPServer(("localhost", self.port), self.handler)
             self.httpd.directory = str(self.directory)  # type: ignore
-            logger.info(f"Server initialized on port {self.port} with directory {self.directory}")
+            logger().info(f"Server initialized on port {self.port} with directory {self.directory}")
         except OSError as e:
-            logger.error(f"Could not start server on port {self.port}: {e}")
+            logger().error(f"Could not start server on port {self.port}: {e}")
             exit(1)
 
     @handle
@@ -60,20 +60,20 @@ class Server:
         server_thread: threading.Thread = threading.Thread(target=self.httpd.serve_forever)
         server_thread.daemon = True
         server_thread.start()
-        logger.info(f"Server started on port {self.port}")
+        logger().info(f"Server started on port {self.port}")
 
     @handle
     def open(self) -> None:
         self._start_server()
         url = f"http://localhost:{self.port}"
-        logger.info(f"Opening browser at {url}")
+        logger().info(f"Opening browser at {url}")
         webbrowser.open(url)
 
     @handle
     def _stop_server(self) -> None:
         self.httpd.shutdown()
         self.httpd.server_close()
-        logger.info(f"Server on port {self.port} stopped")
+        logger().info(f"Server on port {self.port} stopped")
 
     @handle
     def close(self) -> None:

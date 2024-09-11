@@ -14,3 +14,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Any
+
+from lynq.backendutils.server.standard import Server
+from lynq.backendutils.safety.handler import handle
+
+from lynq.backendutils.yaml.loader import load_yaml_config
+
+class YamlServer(Server):
+    @handle
+    def __init__(self, name: str) -> None:
+        data: Any = load_yaml_config(name)
+
+        super().__init__(
+            port=data.get("port", 8000),
+            directory=data.get("directory", "./")
+        )

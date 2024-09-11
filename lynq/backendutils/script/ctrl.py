@@ -15,11 +15,11 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import Generator, Optional, Any, Callable
+from typing import Generator, Optional, Callable
 from contextlib import contextmanager
 from lynq.backendutils.script.appendedfile import AppendedFile
-from lynq.backendutils.lynq.logger import logger
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.logger import logger
+from lynq.backendutils.safety.handler import handle
 
 class CTRLScript(AppendedFile):
     def __init__(self, name: str) -> None:
@@ -75,14 +75,14 @@ class CTRLScript(AppendedFile):
         try:
             actions: dict[str, Callable] = cls.__actions__
         except AttributeError:
-            logger.error(f"Error while parsing CTRL module '{cls.__name__}'.")
+            logger().error(f"Error while parsing CTRL module '{cls.__name__}'.")
             return
 
         for name, action in actions.items():
-            logger.info(f"Successfully parsed CTRL module '{cls.__name__}'.")
+            logger().info(f"Successfully parsed CTRL module '{cls.__name__}'.")
             self.safe_save(name, lambda *args, **kwargs: action(self, *args, **kwargs))
 
-        logger.info(f"Successfully imported and included '{cls.__name__}'.")
+        logger().info(f"Successfully imported and included '{cls.__name__}'.")
 
     @handle
     def save(self, **kwargs: Callable) -> None:

@@ -18,12 +18,11 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 import os
 
 from typing import Optional, Any
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
-from lynq.backendutils.lynq.logger import logger
+from lynq.backendutils.safety.logger import logger
 from lynq.backendutils.launcher.launch import launch
 from lynq.backendutils.app.supportswith import SupportsWithKeyword
-from lynq.backendutils.lynq.lynqserverorrelated import LynqServerOrRelatedObjects
 from lynq.backendutils.app.supportedtags import supported_tags
 from lynq.backendutils.script.ctrl import CTRLScript
 from lynq.backendutils.style.style import StyledAppAttachment
@@ -34,7 +33,7 @@ class AppObject(SupportsWithKeyword):
         from lynq.backendutils.app.app import app as app_
 
         if app is None:
-            logger.fatal("Please provide a parent app.")
+            logger().fatal("Please provide a parent app.")
             exit(1)
 
         self.server: Any = app.server
@@ -51,7 +50,7 @@ class AppObject(SupportsWithKeyword):
 
     @handle
     def on_run(self) -> None:
-        logger.info("Please wait while we build your HTML file for you.")
+        logger().info("Please wait while we build your HTML file for you.")
 
         self.singular("<!DOCTYPE html>")
         self.singular("<html>")
@@ -91,34 +90,34 @@ class AppObject(SupportsWithKeyword):
     def exit(self) -> None:
         self.singular("</html>")
 
-        logger.info("Building has been finished successfully.")
+        logger().info("Building has been finished successfully.")
 
     @handle
     def pass_to_server(self) -> None:
         if self.server is None:
-            logger.fatal("Cannot pass lynq app script to server when no server was provided.")
+            logger().fatal("Cannot pass lynq app script to server when no server was provided.")
             exit(1)
 
-        logger.info(f"Passed '{self.name}' lynq app script to host '{type(self.server).__name__}'")
+        logger().info(f"Passed '{self.name}' lynq app script to host '{type(self.server).__name__}'")
 
         if self.style is not None:
-            logger.info(f"Passed stylesheet '{self.new_stylesheet_path}' to pebl script '{self.name}'.")
+            logger().info(f"Passed stylesheet '{self.new_stylesheet_path}' to pebl script '{self.name}'.")
 
             self.style_.close()
 
         launch(self.server)
 
-        logger.info("Continuing in pebl app to clear cache.")
+        logger().info("Continuing in pebl app to clear cache.")
 
         try: os.remove(self.name)
         except FileNotFoundError:
-            logger.warn(f"Could not find '{self.name}', so it cannot be cleaned.")
+            logger().warn(f"Could not find '{self.name}', so it cannot be cleaned.")
 
         try: os.remove(self.ctrl.path)
         except FileNotFoundError:
-            logger.warn(f"Could not find '{self.name}', so it cannot be cleaned.")
+            logger().warn(f"Could not find '{self.name}', so it cannot be cleaned.")
 
         if self.style_ is not None:
             try: os.remove(self.new_stylesheet_path)
             except FileNotFoundError:
-                logger.warn(f"Could not find '{self.new_stylesheet_path}', so it cannot be cleaned.")
+                logger().warn(f"Could not find '{self.new_stylesheet_path}', so it cannot be cleaned.")

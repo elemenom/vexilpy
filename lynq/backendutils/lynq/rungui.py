@@ -15,12 +15,11 @@ You should have received a copy of the GNU General Public License
 along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 """
 
-import os
 from tkinter import Tk, Label, Entry, Button
 from tkinter.messagebox import showerror, showinfo
 from typing import Any, Optional
 from lynq.backendutils.lynq.msie import pwsh
-from lynq.backendutils.lynq.logger import logger
+from lynq.backendutils.safety.logger import logger
 
 def run_process(text: str, logger: Any, id_: Optional[str] = None) -> None:
     if text == "":
@@ -58,7 +57,7 @@ def run_process(text: str, logger: Any, id_: Optional[str] = None) -> None:
         pwsh(f"start {url}")
 
     elif text.strip(">") in {"exit", "%exit"}:
-        logger.info("Exited Lynq RUNGUI.")
+        logger().info("Exited Lynq RUNGUI.")
 
     elif text.strip(">") in {"help", "%help"}:
         print("> Looking for help regarding Lynq and Lynq RUNGUI? Try '$$HELP'.")
@@ -67,7 +66,7 @@ def run_process(text: str, logger: Any, id_: Optional[str] = None) -> None:
         showinfo("Help", r"$$EXIT, %exit, >exit - exit the GUI and end the program. $$PING, %pinglynq - Ping the terminal from this Lynq RUNGUI. $$TERMINAL - continue in terminal. See the 'README.md' file or run 'import lynq; print(lynq.MyLynq.help())' in a Python command line interface for more help.")
 
     elif text.strip(">") in {"pinglynq", "%pinglynq"}:
-        logger.info(f"Ping received from Lynq RUNGUI 'id={id_ or 'none (unnamed)'}'.")
+        logger().info(f"Ping received from Lynq RUNGUI 'id={id_ or 'none (unnamed)'}'.")
 
     elif text.startswith(">") or text.startswith("%"):
         pwsh(text.strip(">") if text.strip(">") != text else text.removeprefix("%"))
@@ -86,5 +85,5 @@ def run_gui(id: Optional[str] = None) -> None:
     entry.pack(padx=10, pady=10)
     Button(root, text="Submit", command=lambda: run_process(entry.get(), logger, id)).pack(pady=10)
 
-    logger.info("Completed dist; launch sequence initiated.")
+    logger().info("Completed dist; launch sequence initiated.")
     root.mainloop()

@@ -18,7 +18,7 @@ along with Lynq. If not, see <https://www.gnu.org/licenses/>.
 from lynq.backendutils.server.standard import Server
 from lynq.backendutils.basin.object import BasinObject
 from lynq.backendutils.basin.getval import getval
-from lynq.backendutils.errors.handler import handle
+from lynq.backendutils.safety.handler import handle
 
 class BasinServer(Server):
     @handle
