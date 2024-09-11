@@ -153,7 +153,11 @@ if "pypi_upload_setup.py" in inspect.stack()[-1].filename:
 
 # UPDATE RELEASE FOR PYPI (PIP)
 # GIT BASH ONLY
-# rm -rf dist build lynq.egg-info; python pypi_upload_setup.py sdist bdist_wheel; twine upload dist/*
+# ```
+# rm -rf dist build lynq.egg-info
+# python pypi_upload_setup.py sdist bdist_wheel
+# twine upload dist/*
+# ```
 
 def main() -> None:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description="Basic config")
