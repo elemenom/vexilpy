@@ -163,7 +163,7 @@ def main() -> None:
     parser.add_argument("--Rungui", action="store_true", help="Start a new instance of Lynq RUNGUI and exit the program.")
     parser.add_argument("--Clean", action="store_true", help="Clean pycache files and exit the program.")
 
-    parser.add_argument("--Run_Process", type=str, help="Run a process like from a Lynq RUNGUI, but presented directly from a CLI.")
+    parser.add_argument("--Run-Process", type=str, help="Run a process like from a Lynq RUNGUI, but presented directly from a CLI.")
 
     args, _ = parser.parse_known_args()
 
@@ -240,7 +240,7 @@ safety:
     if args.Run_Process:
         from lynq.backendutils.lynq.rungui import run_process
 
-        run_process(args.__getattribute__("lq_run_process"), logger, "<terminal (ran using lynq CLI)>")
+        run_process(args.Run_Process, logger, "<terminal Run-Process instance>")
 
         exit()
 
