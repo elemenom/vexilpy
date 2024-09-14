@@ -1,48 +1,48 @@
-# Welcome to Lynq
-### This documentation including its installation guide may only be applicable to Lynq 10(.2)
+# Welcome to VexilPy
+### This documentation including its installation guide may only be applicable to VexilPy v11
 
-**Documentation for Lynq**
+**Documentation for VexilPy**
 
-Lynq is a Python-based framework designed to simplify the development and management of web applications.
+VexilPy is a Python-based framework designed to simplify the development and management of web applications.
 It provides a set of tools and utilities to streamline the development process,
 enhance security, and improve performance.
 
 **Installation**
 
-To install Lynq, you can use either pip or git.
+To install VexilPy, you can use either pip or git.
 
-***Recommended*** | Install Lynq v10.2 using pip:
+***Recommended*** | Install VexilPy v11 using pip:
 ```commandline
-pip install lynq
+pip install vexilpy
 ```
 
-*Updated in v10.2* | Download source code for Lynq v10.2 using:
+*Updated in v11* | Download source code for VexilPy 11 using:
 ```commandline
-git clone https://github.com/elemenom/lynq.git
+git clone https://github.com/elemenom/vexilpy.git
 ```
 
 **Download Source Code
 
 **Upgrade**
 
-To upgrade Lynq, you can use either pip or git.
+*Updated in v11* | To upgrade VexilPy, you can use either pip or git.
 
-Using pip:
+*Updated in v11* | Using pip:
 ```commandline
-pip install lynq --upgrade
+pip install vexilpy --upgrade
 ```
 
-*Updated in v10.2* | Using git:
+*Updated in v11* | Using git:
 ```commandline
-rm -rf lynq
+rm -rf vexilpy
 
-git clone https://github.com/elemenom/lynq.git
+git clone https://github.com/elemenom/vexilpy.git
 ```
 
 **Links**
 
-- GitHub: https://github.com/elemenom/lynq/
-- PyPI: https://pypi.org/project/lynq/
+*Updated in v11* | - GitHub: https://github.com/elemenom/vexilpy/
+*Updated in v11* | - PyPI: https://pypi.org/project/vexilpy/
 
 **Author**
 
@@ -54,40 +54,45 @@ git clone https://github.com/elemenom/lynq.git
 
 **Command-Line Interface (CLI) Usage**
 
-*Most of this section was updated in v10.2*
-
-Lynq provides a command-line interface (CLI) to perform various tasks such as running the application, cleaning pycache files, and running processes directly from the CLI.
+VexilPy provides a command-line interface (CLI) to perform various tasks such as running the application, cleaning pycache files, and running processes directly from the CLI.
 
 To use the CLI, you can run the following commands:
 
-- Run the application with GUI:
+*Updated in v11* | - Run the application with GUI:
 ```commandline
-python -m lynq --rungui
+python -m vexilpy --RunGui
 ```
 
-- Clean pycache files:
+*Updated in v11* | - Clean pycache files:
 ```commandline
-python -m lynq --clean
+python -m vexilpy --Clean
 ```
 
-- Run a process directly from the CLI:
+*Updated in v11* | - Run a process directly from the CLI:
 ```commandline
-python -m lynq --run_process "<process_command>"
+python -m vexilpy --Run-Process "<process_command>"
 ```
 
-**Lynq Configuration**
+**VexilPy Configuration**
 
-*Updated in v10.2* | Lynq supports configuration in YAML.
+VexilPy supports configuration in YAML.
 
-- To link a .yaml file, run your file like this:
+*Updated in v11* | - To link a .yaml file, run your file like this:
 ```commandline
-python main.py -F lynqconfig.yaml
+python main.py -F vexilconfig.yaml
 ```
 or
 ```commandline
-python main.py --File lynqconfig.yaml
+python main.py --File vexilconfig.yaml
+```
+
+*Updated in v11* | If you don't provide a vexilconfig file, VexilPy will automatically create (if needed) and use `vexilconfig.yaml`.
+A warning will be logged if the file has to be created.
+
+```log
+WARNING | No vexilconfig.yaml file found. Creating a new one.
 ```
 
 **Important Note**
 
-Please note that the `backendutils` directory is not intended to be accessed directly. It contains internal utilities and modules used by Lynq. Any code within this directory should not be modified or accessed directly.
+Please note that the `backendutils` directory is not intended to be accessed directly. It contains internal utilities and modules used by VexilPy. Any code within this directory should not be modified or accessed directly.
