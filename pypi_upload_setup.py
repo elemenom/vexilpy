@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 
-from lynq import SYSVER
+from vexilpy import SYSVER
 
 setup(
-    name="lynq",
+    name="vexilpy",
     version=str(SYSVER),
     author="Elekk (elemenom)",
     author_email="pixilreal@gmail.com",
     description="Hosting local servers easily, smooth as butter.",
     long_description=(README:=open("README.md")).read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/elemenom/lynq",
+    url="https://github.com/elemenom/vexilpy",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -20,6 +20,6 @@ setup(
     python_requires='>=3.12',
     license="GPLv3",
     include_package_data=True,
-    install_requires=["simple-term-menu"]
+    install_requires=["pyyaml"]
 )
 README.close()
