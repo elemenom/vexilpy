@@ -1,9 +1,8 @@
 from random import randint
 from typing import Optional, Any
 
-from vexilpy.backendutils.safety.handler import handle
-from vexilpy.backendutils.safety.logger import logger
-
+from ..safety.handler import handle
+from ..safety.logger import logger
 
 @handle
 class InclusionMap:
