@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6e4dbf6a-86cb-4e1e-820b-eedec7c875ed" name="Changes" comment="v9.7&#10;&#10;&gt; New documentation&#10;&gt; Bug fixes">
+      <change beforePath="$PROJECT_DIR$/vexilpy/backendutils/vexilpy/importer.py" beforeDir="false" afterPath="$PROJECT_DIR$/vexilpy/backendutils/vexilpy/importer.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;CLOSED&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOMlUxG856s4xk&quot;,
+        &quot;number&quot;: 27
+      },
+      &quot;lastSeen&quot;: 1725721466072
+    }
+  ]
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/elemenom/lynq&quot;,
+    &quot;accountId&quot;: &quot;06a313bf-1434-48b9-b8e5-f5ed7ad59e1b&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;elemenom&quot;,
+    &quot;repository&quot;: &quot;lynq&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2lfNcjM8BK8sjYGIy0c987PnWoJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#37 on v12",
+    "last_opened_file_path": "C:/Users/pixil/OneDrive/Documents/vexilpy",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pixil\OneDrive\Documents\vexilpy\vexilpy\backendutils\stock\style" />
+      <recent name="C:\Users\pixil\OneDrive\Documents\vexilpy\vexilpy\backendutils" />
+      <recent name="C:\Users\pixil\OneDrive\Documents\vexilpy\vexilpy\backendutils\vexilpy" />
+      <recent name="C:\Users\pixil\OneDrive\Documents\lynq" />
+      <recent name="C:\Users\pixil\OneDrive\Documents\lynq\lynq\backendutils\quake" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="main.py" />
+      <command value="pip install lynq" />
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e4dbf6a-86cb-4e1e-820b-eedec7c875ed" name="Changes" comment="" />
+      <created>1725567252656</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725567252656</updated>
+    </task>
+    <task id="LOCAL-00001" summary="v9.1">
+      <option name="closed" value="true" />
+      <created>1725650555685</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725650555685</updated>
+    </task>
+    <task id="LOCAL-00002" summary="v9.1">
+      <option name="closed" value="true" />
+      <created>1725651307849</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725651307849</updated>
+    </task>
+    <task id="LOCAL-00003" summary="v9.2&#10;&#10;&gt; The trio has been completed! You can now write scripts for your web applications using our embedded language, CTRLScript (controlscript)! In you app function, call `self.ctrl.&lt;action&gt;` (replace &lt;action&gt; with whatever you want to add), and we'll interpret it as a JavaScript file, and link it to your HTML file automatically.">
+      <option name="closed" value="true" />
+      <created>1725696561424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725696561424</updated>
+    </task>
+    <task id="LOCAL-00004" summary="v9.5&#10;&#10;&gt; Fixed bug in pip when importing Lynq.&#10;&gt; Fixed author PyPI link.">
+      <option name="closed" value="true" />
+      <created>1725715004193</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725715004193</updated>
+    </task>
+    <task id="LOCAL-00005" summary="v9.6&#10;&#10;&gt; Fixed bug in pip when importing Lynq.&#10;&gt; Fixed author PyPI link.">
+      <option name="closed" value="true" />
+      <created>1725715077265</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725715077265</updated>
+    </task>
+    <task id="LOCAL-00006" summary="v9.7&#10;&#10;&gt; New documentation&#10;&gt; Bug fixes">
+      <option name="closed" value="true" />
+      <created>1725719492590</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725719492590</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v9.1" />
+    <MESSAGE value="v9.2&#10;&#10;&gt; The trio has been completed! You can now write scripts for your web applications using our embedded language, CTRLScript (controlscript)! In you app function, call `self.ctrl.&lt;action&gt;` (replace &lt;action&gt; with whatever you want to add), and we'll interpret it as a JavaScript file, and link it to your HTML file automatically." />
+    <MESSAGE value="v9.5&#10;&#10;&gt; Fixed bug in pip when importing Lynq.&#10;&gt; Fixed author PyPI link." />
+    <MESSAGE value="v9.6&#10;&#10;&gt; Fixed bug in pip when importing Lynq.&#10;&gt; Fixed author PyPI link." />
+    <MESSAGE value="v9.7&#10;&#10;&gt; New documentation&#10;&gt; Bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="v9.7&#10;&#10;&gt; New documentation&#10;&gt; Bug fixes" />
+  </component>
+</project>
