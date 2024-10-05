@@ -1,0 +1,1128 @@
+[
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Generator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "inspect,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "inspect.",
+        "description": "inspect.",
+        "detail": "inspect.",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "contextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "http.server",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "http.server",
+        "description": "http.server",
+        "detail": "http.server",
+        "documentation": {}
+    },
+    {
+        "label": "socketserver",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socketserver",
+        "description": "socketserver",
+        "detail": "socketserver",
+        "documentation": {}
+    },
+    {
+        "label": "webbrowser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "randint",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "import_module",
+        "importPath": "importlib",
+        "description": "importlib",
+        "isExtraImport": true,
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "run",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "isExtraImport": true,
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "Tk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "Label",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "Entry",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "Button",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "showerror",
+        "importPath": "tkinter.messagebox",
+        "description": "tkinter.messagebox",
+        "isExtraImport": true,
+        "detail": "tkinter.messagebox",
+        "documentation": {}
+    },
+    {
+        "label": "showinfo",
+        "importPath": "tkinter.messagebox",
+        "description": "tkinter.messagebox",
+        "isExtraImport": true,
+        "detail": "tkinter.messagebox",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "SYSVER",
+        "importPath": "vexilpy",
+        "description": "vexilpy",
+        "isExtraImport": true,
+        "detail": "vexilpy",
+        "documentation": {}
+    },
+    {
+        "label": "WebApp",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.app",
+        "description": "vexilpy.backendutils.app.app",
+        "peekOfCode": "class WebApp(SupportsWithKeyword):\n    @handle\n    def __init__(self, server: Optional[VexilPyServerOrRelatedObjects] = None, style_path: Optional[str] = None) -> None:\n        from ..style.style import StyledAppAttachment\n        self.style = new(\"StyledAppAttachmentWithBackAttribute\", (StyledAppAttachment,),\n            back = lambda _:\\\n                self\n        )(style_path)\n        super().__init__()\n        self.server: VexilPyServerOrRelatedObjects | None = server",
+        "detail": "vexilpy.backendutils.app.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.app",
+        "description": "vexilpy.backendutils.app.app",
+        "peekOfCode": "def app(server: Optional[VexilPyServerOrRelatedObjects] = None, style_path: Optional[str] = None) -> WebApp:\n    return WebApp(server, style_path)",
+        "detail": "vexilpy.backendutils.app.app",
+        "documentation": {}
+    },
+    {
+        "label": "AppObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.appobject",
+        "description": "vexilpy.backendutils.app.appobject",
+        "peekOfCode": "class AppObject(SupportsWithKeyword):\n    @handle\n    def __init__(self, name: Optional[str] = None, app: Any = None) -> None:\n        super().__init__()\n        from ..app.app import app as app_\n        if app is None:\n            logger().fatal(\"Please provide a parent app.\")\n            exit(1)\n        self.server: Any = app.server\n        self.name: str = name",
+        "detail": "vexilpy.backendutils.app.appobject",
+        "documentation": {}
+    },
+    {
+        "label": "BasinWebApp",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.basinapp",
+        "description": "vexilpy.backendutils.app.basinapp",
+        "peekOfCode": "class BasinWebApp(WebApp):\n    @handle\n    def __init__(self, path: Optional[str] = None) -> None:\n        super().__init__(BasinServer(path or \"index.bsn\"))\n@handle\ndef basinapp(path: Optional[str] = None) -> BasinWebApp:\n    return BasinWebApp(path)",
+        "detail": "vexilpy.backendutils.app.basinapp",
+        "documentation": {}
+    },
+    {
+        "label": "basinapp",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.basinapp",
+        "description": "vexilpy.backendutils.app.basinapp",
+        "peekOfCode": "def basinapp(path: Optional[str] = None) -> BasinWebApp:\n    return BasinWebApp(path)",
+        "detail": "vexilpy.backendutils.app.basinapp",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.blankslateobject",
+        "description": "vexilpy.backendutils.app.blankslateobject",
+        "peekOfCode": "def new(name: str, superclasses: tuple[type, ...], **items: Any) -> Callable:\n    return type(name, superclasses, items)",
+        "detail": "vexilpy.backendutils.app.blankslateobject",
+        "documentation": {}
+    },
+    {
+        "label": "JsonWebApp",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.jsonapp",
+        "description": "vexilpy.backendutils.app.jsonapp",
+        "peekOfCode": "class JsonWebApp(WebApp):\n    @handle\n    def __init__(self, path: Optional[str] = None) -> None:\n        super().__init__(JsonServer(path or \"index.json\"))\n@handle\ndef jsonapp(path: Optional[str] = None) -> JsonWebApp:\n    return JsonWebApp(path)",
+        "detail": "vexilpy.backendutils.app.jsonapp",
+        "documentation": {}
+    },
+    {
+        "label": "jsonapp",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.jsonapp",
+        "description": "vexilpy.backendutils.app.jsonapp",
+        "peekOfCode": "def jsonapp(path: Optional[str] = None) -> JsonWebApp:\n    return JsonWebApp(path)",
+        "detail": "vexilpy.backendutils.app.jsonapp",
+        "documentation": {}
+    },
+    {
+        "label": "ExecMethod",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.processes",
+        "description": "vexilpy.backendutils.app.processes",
+        "peekOfCode": "class ExecMethod:\n    def __init__(self, cls: Callable, *args: Any, **kwargs: Any) -> None:\n        self.__cls__ = cls\n        self.obj = cls(*args, **kwargs)\n    def __action__(self, *_) -> None:\n        ...\n    def __wrapper__(self, other: tuple[Any, ...]) -> Any:\n        return self.obj.__action__(*other)\ndef m(cls: Any) -> ExecMethod:\n    return ExecMethod(cls)",
+        "detail": "vexilpy.backendutils.app.processes",
+        "documentation": {}
+    },
+    {
+        "label": "m",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.processes",
+        "description": "vexilpy.backendutils.app.processes",
+        "peekOfCode": "def m(cls: Any) -> ExecMethod:\n    return ExecMethod(cls)",
+        "detail": "vexilpy.backendutils.app.processes",
+        "documentation": {}
+    },
+    {
+        "label": "RemoteWebApp",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.remoteapp",
+        "description": "vexilpy.backendutils.app.remoteapp",
+        "peekOfCode": "class RemoteWebApp(WebApp):\n    @handle\n    def __init__(self, port: Optional[int] = None, directory: Optional[str] = None) -> None:\n        super().__init__(Server(port or 8000, directory or \"./\"))\n@handle\ndef rmtapp(path: Optional[str] = None, directory: Optional[str] = None) -> RemoteWebApp:\n    return RemoteWebApp(path, directory)",
+        "detail": "vexilpy.backendutils.app.remoteapp",
+        "documentation": {}
+    },
+    {
+        "label": "rmtapp",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.remoteapp",
+        "description": "vexilpy.backendutils.app.remoteapp",
+        "peekOfCode": "def rmtapp(path: Optional[str] = None, directory: Optional[str] = None) -> RemoteWebApp:\n    return RemoteWebApp(path, directory)",
+        "detail": "vexilpy.backendutils.app.remoteapp",
+        "documentation": {}
+    },
+    {
+        "label": "RepositoryObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.site",
+        "description": "vexilpy.backendutils.app.site",
+        "peekOfCode": "class RepositoryObject(SupportsWithKeyword):\n    def __init__(self, name: Optional[str] = None) -> None:\n        self.pages: list[WebApp] = []\n        self.name: str | None = None\n    def __enter__(self) -> Self:\n        # Get the frame of the caller\n        frame = inspect.currentframe().f_back\n        # Get the source code of the line containing the with statement\n        source_line = inspect.getframeinfo(frame).code_context[0].strip()\n        # Extract the \"as name\" part if it exists",
+        "detail": "vexilpy.backendutils.app.site",
+        "documentation": {}
+    },
+    {
+        "label": "StandardAppExportObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.standardappexportobject",
+        "description": "vexilpy.backendutils.app.standardappexportobject",
+        "peekOfCode": "class StandardAppExportObject(SupportsWithKeyword):\n    @handle\n    def __init__(self, app_: WebApp, object_: Any = AppObject, *args: Any, **kwargs: Any) -> None:\n        self.app: WebApp = app_\n        self.name: str = \"index\" if self.app.fn.__name__.lower() == \"base\" else self.app.fn.__name__\n        self.object: type[object_] = object_\n        self.args: tuple[Any, ...] = args\n        self.kwargs: dict[str, Any] = kwargs\n        self.postb: Any = None\n    def __invert__(self) -> Any:",
+        "detail": "vexilpy.backendutils.app.standardappexportobject",
+        "documentation": {}
+    },
+    {
+        "label": "run_and_open",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.standardappexportobject",
+        "description": "vexilpy.backendutils.app.standardappexportobject",
+        "peekOfCode": "def run_and_open(app: StandardAppExportObject, *args: Any, **kwargs: Any) -> Any:\n    return app(*args, **kwargs).open()",
+        "detail": "vexilpy.backendutils.app.standardappexportobject",
+        "documentation": {}
+    },
+    {
+        "label": "SupportsWithKeyword",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.supportswith",
+        "description": "vexilpy.backendutils.app.supportswith",
+        "peekOfCode": "class SupportsWithKeyword:\n    @handle\n    def __init__(self) -> None:\n        ...\n    @handle\n    def __enter__(self) -> Self:\n        return self\n    @handle\n    def __exit__(self, *_) -> None:\n        ...",
+        "detail": "vexilpy.backendutils.app.supportswith",
+        "documentation": {}
+    },
+    {
+        "label": "TagObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.tagobject",
+        "description": "vexilpy.backendutils.app.tagobject",
+        "peekOfCode": "class TagObject(AppObject):\n    @handle\n    def __init__(self, name: str, tag: str, app: WebApp, args: Optional[WebApp] = None) -> None:\n        super().__init__(name, app)\n        self.tagstr: str = tag\n        self.singular(f\"<{self.tagstr} {args or ''}>\")\n    @handle\n    def on_run(self) -> None:\n        ...\n    @handle",
+        "detail": "vexilpy.backendutils.app.tagobject",
+        "documentation": {}
+    },
+    {
+        "label": "YamlWebApp",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.app.yamlapp",
+        "description": "vexilpy.backendutils.app.yamlapp",
+        "peekOfCode": "class YamlWebApp(WebApp):\n    @handle\n    def __init__(self, path: Optional[str] = None) -> None:\n        super().__init__(YamlServer(path or \"vexilconfig.yaml\"))\n@handle\ndef yamlapp(path: Optional[str] = None) -> YamlWebApp:\n    return YamlWebApp(path)",
+        "detail": "vexilpy.backendutils.app.yamlapp",
+        "documentation": {}
+    },
+    {
+        "label": "yamlapp",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.app.yamlapp",
+        "description": "vexilpy.backendutils.app.yamlapp",
+        "peekOfCode": "def yamlapp(path: Optional[str] = None) -> YamlWebApp:\n    return YamlWebApp(path)",
+        "detail": "vexilpy.backendutils.app.yamlapp",
+        "documentation": {}
+    },
+    {
+        "label": "getval",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.basin.getval",
+        "description": "vexilpy.backendutils.basin.getval",
+        "peekOfCode": "def getval(key: str, basin: Optional[BasinObject] = None, path: Optional[str] = None, default: Any = None) -> Any:\n    return (basin or BasinObject(path)).read_whole().get(key, default)",
+        "detail": "vexilpy.backendutils.basin.getval",
+        "documentation": {}
+    },
+    {
+        "label": "BasinObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.basin.object",
+        "description": "vexilpy.backendutils.basin.object",
+        "peekOfCode": "class BasinObject:\n    @handle\n    def __init__(self, path: Optional[str] = None) -> None:\n        self.path: str = path or \"config.bsn\"\n    @handle\n    def set_path(self, path: Optional[str] = None) -> Self:\n        self.path = path or \"config.bsn\"\n        return self\n    @handle\n    def read_whole(self) -> BasinReturnObject:",
+        "detail": "vexilpy.backendutils.basin.object",
+        "documentation": {}
+    },
+    {
+        "label": "directlaunch",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.launcher.direct",
+        "description": "vexilpy.backendutils.launcher.direct",
+        "peekOfCode": "def directlaunch(port: Optional[int] = None, directory: Optional[str] = None) -> Server:\n    server: Server = Server(port or 8000, directory or \".\")\n    return launch(server)",
+        "detail": "vexilpy.backendutils.launcher.direct",
+        "documentation": {}
+    },
+    {
+        "label": "launch",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.launcher.launch",
+        "description": "vexilpy.backendutils.launcher.launch",
+        "peekOfCode": "def launch(server: VexilPyServerOrRelatedObjects) -> VexilPyServerOrRelatedObjects:\n    try:\n        server.open()\n        safe_input(\"\\033[1;93mPress enter to exit your VexilPy server...\\n\\033[0m\")\n    finally:\n        server.close()\n    return server",
+        "detail": "vexilpy.backendutils.launcher.launch",
+        "documentation": {}
+    },
+    {
+        "label": "handle",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.safety.handler",
+        "description": "vexilpy.backendutils.safety.handler",
+        "peekOfCode": "def handle(fn: Callable) -> Callable:\n    @wraps(fn)\n    def wrapper(*args: Any, **kwargs: Any) -> Any:\n        from ..safety.logger import logger\n        from ..safety.safe_input import safe_input\n        try:\n            result: Any = fn(*args, **kwargs)\n            return result\n        except KeyboardInterrupt:\n            try:",
+        "detail": "vexilpy.backendutils.safety.handler",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.safety.logger",
+        "description": "vexilpy.backendutils.safety.logger",
+        "peekOfCode": "def logger() -> Any:\n    if not logger_literal:\n        from ..app.blankslateobject import new\n        print(\"error: vexilpy tried to interact with the logger, but access was denied.\")\n        print(\"info: logger has been either destroyed, or not yet initialised.\")\n        print(\"info: attempting to retrieve log type and contents (marked as '--pseudo-logger'):\")\n        return new(\"UselessObjectWithPrinter\", (UselessObject,),\n            __getattribute__ = \\\n                lambda item:\\\n                    lambda value:\\",
+        "detail": "vexilpy.backendutils.safety.logger",
+        "documentation": {}
+    },
+    {
+        "label": "init_logger",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.safety.logger",
+        "description": "vexilpy.backendutils.safety.logger",
+        "peekOfCode": "def init_logger(logger_: Any) -> None:\n    global logger_literal\n    logger_literal = logger_\n    _add_level(logger_literal, 25, \"HINT\")",
+        "detail": "vexilpy.backendutils.safety.logger",
+        "documentation": {}
+    },
+    {
+        "label": "safe_input",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.safety.safe_input",
+        "description": "vexilpy.backendutils.safety.safe_input",
+        "peekOfCode": "def safe_input(prefix: Optional[str] = None, else_func: Optional[Callable] = None) -> str | None:\n    if sys.stdin.closed:\n        if else_func:\n            else_func()\n        else:\n            logger().error(\"VexilPy tried to prompt the current terminal, but the connection was denied.\")\n            logger().hint(\"Stdin input stream has already been closed.\")\n            return\n    else:\n        return input(prefix or \"\")",
+        "detail": "vexilpy.backendutils.safety.safe_input",
+        "documentation": {}
+    },
+    {
+        "label": "UselessObject",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.safety.uselessobject",
+        "description": "vexilpy.backendutils.safety.uselessobject",
+        "peekOfCode": "class UselessObject:\n    \"\"\"\n    Object that does nothing. Takes any arguments and cannot have attributes.\n    It can be used as a dump for attributes, or as a useless function.\n    \"\"\"\n    def __init__(self, *_, **__) -> None:\n        ...\n    def __getattribute__(self, item):\n        ...",
+        "detail": "vexilpy.backendutils.safety.uselessobject",
+        "documentation": {}
+    },
+    {
+        "label": "AppendedFile",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.script.appendedfile",
+        "description": "vexilpy.backendutils.script.appendedfile",
+        "peekOfCode": "class AppendedFile:\n    def __init__(self) -> None:\n        self.path: Optional[str] = None\n    def init_file(self, path: str) -> None:\n        self.path = path\n        self.write()  # Initialize with an empty line\n    def write(self, cont: Optional[str] = None) -> None:\n        if self.path is None:\n            logger().fatal(\"Cannot write to file appendant when file was not initialized.\")\n            raise ValueError(\"File path is not initialized.\")",
+        "detail": "vexilpy.backendutils.script.appendedfile",
+        "documentation": {}
+    },
+    {
+        "label": "CTRLScript",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.script.ctrl",
+        "description": "vexilpy.backendutils.script.ctrl",
+        "peekOfCode": "class CTRLScript(AppendedFile):\n    def __init__(self, name: str) -> None:\n        super().__init__()\n        self.init_file(f\"{name}.js\")\n    @contextmanager\n    @handle\n    def function(self, name: str, *args: str) -> Generator:\n        self.write(f\"function {name}({', '.join(args)}) {{\")\n        yield\n        self.write(\"}\")",
+        "detail": "vexilpy.backendutils.script.ctrl",
+        "documentation": {}
+    },
+    {
+        "label": "BasinServer",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.server.basin",
+        "description": "vexilpy.backendutils.server.basin",
+        "peekOfCode": "class BasinServer(Server):\n    @handle\n    def __init__(self, name: str) -> None:\n        basin: BasinObject = BasinObject(name)\n        super().__init__(\n            port=getval(\"port\", basin, default=8000),\n            directory=getval(\"directory\", basin, default=\"./\")\n        )",
+        "detail": "vexilpy.backendutils.server.basin",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigurableServer",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.server.custom",
+        "description": "vexilpy.backendutils.server.custom",
+        "peekOfCode": "class ConfigurableServer(Server):\n    @handle\n    def __init__(self, config_file: Optional[str] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):\n        config = self.load_config(config_file)\n        port = config.get(\"port\", 8000)  # Default to int\n        directory = directory or config.get(\"directory\")\n        super().__init__(port, directory, handler)\n    @staticmethod\n    @handle\n    def load_config(config_file: Optional[str]) -> dict:",
+        "detail": "vexilpy.backendutils.server.custom",
+        "documentation": {}
+    },
+    {
+        "label": "JsonServer",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.server.json",
+        "description": "vexilpy.backendutils.server.json",
+        "peekOfCode": "class JsonServer(Server):\n    @handle\n    def __init__(self, name: str) -> None:\n        with open(name) as file:\n            data: Any = json.load(file)\n        super().__init__(\n            port=data.get(\"port\", 8000),\n            directory=data.get(\"directory\", \"./\")\n        )",
+        "detail": "vexilpy.backendutils.server.json",
+        "documentation": {}
+    },
+    {
+        "label": "Server",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.server.standard",
+        "description": "vexilpy.backendutils.server.standard",
+        "peekOfCode": "class Server:\n    @handle\n    def __init__(self, port: Optional[int] = None, directory: Optional[str] = None, handler: Optional[Type[http.server.BaseHTTPRequestHandler]] = None):\n        self.port: int = port or 8000\n        self.directory: Path = Path(directory) if directory else Path.cwd()\n        self.handler: Type[http.server.BaseHTTPRequestHandler] = handler or self._create_handler()\n        try:\n            self.httpd: socketserver.TCPServer = socketserver.TCPServer((\"localhost\", self.port), self.handler)\n            self.httpd.directory = str(self.directory)  # type: ignore\n            logger().info(f\"Server initialized on port {self.port} with directory {self.directory}\")",
+        "detail": "vexilpy.backendutils.server.standard",
+        "documentation": {}
+    },
+    {
+        "label": "YamlServer",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.server.yaml",
+        "description": "vexilpy.backendutils.server.yaml",
+        "peekOfCode": "class YamlServer(Server):\n    @handle\n    def __init__(self, name: str) -> None:\n        data: Any = load_yaml_config(name)\n        super().__init__(\n            port=data.get(\"port\", 8000),\n            directory=data.get(\"directory\", \"./\")\n        )",
+        "detail": "vexilpy.backendutils.server.yaml",
+        "documentation": {}
+    },
+    {
+        "label": "Arialify",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.stock.style.standard",
+        "description": "vexilpy.backendutils.stock.style.standard",
+        "peekOfCode": "class Arialify:\n    __style__ = {\n        \"font-family\": \"Arial\"\n    }\nclass Magnify:\n    __style__ = {\n        \"font-size\": \"3em\"\n    }",
+        "detail": "vexilpy.backendutils.stock.style.standard",
+        "documentation": {}
+    },
+    {
+        "label": "Magnify",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.stock.style.standard",
+        "description": "vexilpy.backendutils.stock.style.standard",
+        "peekOfCode": "class Magnify:\n    __style__ = {\n        \"font-size\": \"3em\"\n    }",
+        "detail": "vexilpy.backendutils.stock.style.standard",
+        "documentation": {}
+    },
+    {
+        "label": "StyleAttribute",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.style.attribute",
+        "description": "vexilpy.backendutils.style.attribute",
+        "peekOfCode": "class StyleAttribute(SupportsWithKeyword):\n    @handle\n    def __init__(self, style: Any, tag_name: str) -> None:\n        self.style: Any = style\n        self.name: str = tag_name\n        self.written: str = \"\"\n        self._init_attribute()\n    @handle\n    def _init_attribute(self) -> None:\n        self._write_line(f\"{self.name} \" + \"{\")",
+        "detail": "vexilpy.backendutils.style.attribute",
+        "documentation": {}
+    },
+    {
+        "label": "InclusionMap",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.style.inclusion",
+        "description": "vexilpy.backendutils.style.inclusion",
+        "peekOfCode": "class InclusionMap:\n    def __init__(self, /, __id__: Optional[str] = None, **inclusions: Any) -> None:\n        self.id: str = __id__ or str(randint(0, 999999))\n        self.inclusions: dict[str, Any] = inclusions\n        logger().info(f\"Created inclusion map {self.id}\")\n@handle\nclass SafeInclusionMap:\n    def __init__(self, attributes: list[str], classes: list[Any], __id__: Optional[str] = None) -> None:\n        self.id: str = __id__ or str(randint(0, 999999))\n        self.attributes: list[str] = attributes",
+        "detail": "vexilpy.backendutils.style.inclusion",
+        "documentation": {}
+    },
+    {
+        "label": "SafeInclusionMap",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.style.inclusion",
+        "description": "vexilpy.backendutils.style.inclusion",
+        "peekOfCode": "class SafeInclusionMap:\n    def __init__(self, attributes: list[str], classes: list[Any], __id__: Optional[str] = None) -> None:\n        self.id: str = __id__ or str(randint(0, 999999))\n        self.attributes: list[str] = attributes\n        self.classes: list[Any] = classes\n        logger().info(f\"Created inclusion map {self.id}\")",
+        "detail": "vexilpy.backendutils.style.inclusion",
+        "documentation": {}
+    },
+    {
+        "label": "StyledAppAttachment",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.style.style",
+        "description": "vexilpy.backendutils.style.style",
+        "peekOfCode": "class StyledAppAttachment:\n    @handle\n    def __init__(self, path: Optional[str] = None) -> None:\n        self.path: str | None = path\n        self.write_later: str = \"\"\n        self.attributes: list[StyleAttribute] = []\n    @handle\n    def close(self, path: Optional[str] = None) -> None:\n        self.path = path or self.path\n        for attribute in self.attributes:",
+        "detail": "vexilpy.backendutils.style.style",
+        "documentation": {}
+    },
+    {
+        "label": "batch_import",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.importer",
+        "description": "vexilpy.backendutils.vexilpy.importer",
+        "peekOfCode": "def batch_import(sector: str, name: str) -> Any:\n    root: Any = import_module(f\"..stock.{sector}.{name}\", __package__)\n    return root\n@handle\ndef stock_import(sector: str, name: str, material: str) -> Any:\n    try:\n        return getattr(batch_import(sector, name), material)\n    except Exception as err:\n        logger().error(f\"An error occurred in a stock module: {sector}.{name}.{material}\")\n        logger().error(f\"Error details: {type(err).__name__} in {err.__traceback__.tb_frame.f_code.co_name}\")",
+        "detail": "vexilpy.backendutils.vexilpy.importer",
+        "documentation": {}
+    },
+    {
+        "label": "stock_import",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.importer",
+        "description": "vexilpy.backendutils.vexilpy.importer",
+        "peekOfCode": "def stock_import(sector: str, name: str, material: str) -> Any:\n    try:\n        return getattr(batch_import(sector, name), material)\n    except Exception as err:\n        logger().error(f\"An error occurred in a stock module: {sector}.{name}.{material}\")\n        logger().error(f\"Error details: {type(err).__name__} in {err.__traceback__.tb_frame.f_code.co_name}\")",
+        "detail": "vexilpy.backendutils.vexilpy.importer",
+        "documentation": {}
+    },
+    {
+        "label": "InternetExplorerInstance",
+        "kind": 6,
+        "importPath": "vexilpy.backendutils.vexilpy.msie",
+        "description": "vexilpy.backendutils.vexilpy.msie",
+        "peekOfCode": "class InternetExplorerInstance:\n    def __init__(self) -> None:\n        self.pwie: Callable = lambda cmd:\\\n            pwsh(f\"$ie = New-Object -ComObject \\\"InternetExplorer.Application\\\"; {cmd}\")\n    @handle\n    def open(self) -> None:\n        self.pwie(\"$ie.Visible = $true\")\n        logger().info(\"Launched new internet explorer instance.\")\n    @handle\n    def navigate(self, link: Optional[str]) -> None:",
+        "detail": "vexilpy.backendutils.vexilpy.msie",
+        "documentation": {}
+    },
+    {
+        "label": "pwsh",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.pwsh",
+        "description": "vexilpy.backendutils.vexilpy.pwsh",
+        "peekOfCode": "def pwsh(cmd: str) -> None:\n    run([\"powershell\", \"-Command\", cmd])",
+        "detail": "vexilpy.backendutils.vexilpy.pwsh",
+        "documentation": {}
+    },
+    {
+        "label": "remove_pycache_from",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.pycache_remover",
+        "description": "vexilpy.backendutils.vexilpy.pycache_remover",
+        "peekOfCode": "def remove_pycache_from(path: Optional[str] = None) -> None:\n    from ..safety.logger import logger\n    if path is None:\n        logger().error(\"Please provide a Pycache removal location as arg 'path'.\")\n        return\n    path = f\"{path.strip('/')}/__pycache__\"\n    logger().debug(f\"Now clearing cache in '{path}'\")\n    try:\n        for item in [i for i in os.listdir(path) if i.endswith(\".pyc\")]:\n            os.remove(f\"{path}/{item}\")",
+        "detail": "vexilpy.backendutils.vexilpy.pycache_remover",
+        "documentation": {}
+    },
+    {
+        "label": "run_process",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.rungui",
+        "description": "vexilpy.backendutils.vexilpy.rungui",
+        "peekOfCode": "def run_process(text: str, logger: Any, id_: Optional[str] = None) -> None:\n    if text == \"\":\n        showerror(\"Error\", \"Please enter a value. Trying to specify a FilePath in the terminal? Try running '$$TERMINAL'. (without quotes)\")\n        return\n    text_upper = text.upper()\n    if text_upper == \"$$TERMINAL\":\n        print(\"/!\\\\ Continuing in a terminal does not support '$$' commands, '>' commands, '%' commands, 'vexilpy://' sites, and custom commands like 'vexilpyping', 'exit' or 'vexilpyhelp'.\")\n        text = \"\"\n    elif text_upper == \"$$HELP\":\n        text = \">helpvexilpy\"",
+        "detail": "vexilpy.backendutils.vexilpy.rungui",
+        "documentation": {}
+    },
+    {
+        "label": "run_gui",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.vexilpy.rungui",
+        "description": "vexilpy.backendutils.vexilpy.rungui",
+        "peekOfCode": "def run_gui(id: Optional[str] = None) -> None:\n    root = Tk()\n    root.title(\"Run using VexilPy\")\n    root.geometry(\"400x150\")\n    root.resizable(False, False)\n    Label(root, text=\"Run a new process using VexilPy\").pack()\n    entry = Entry(root, width=80)\n    entry.pack(padx=10, pady=10)\n    Button(root, text=\"Submit\", command=lambda:\\\n        run_process(entry.get(), logger, id)).pack(pady=10)",
+        "detail": "vexilpy.backendutils.vexilpy.rungui",
+        "documentation": {}
+    },
+    {
+        "label": "load_yaml_config",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.yaml.loader",
+        "description": "vexilpy.backendutils.yaml.loader",
+        "peekOfCode": "def load_yaml_config(path: str) -> Any:\n    if os.path.exists(path):\n        with open(path) as file:\n            config: Any = yaml.safe_load(file)\n        return config\n    else:\n        logger().fatal(f\"yaml: Configuration file '{path}' not found.\")\n        exit(1)",
+        "detail": "vexilpy.backendutils.yaml.loader",
+        "documentation": {}
+    },
+    {
+        "label": "merge_configs",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.yaml.merger",
+        "description": "vexilpy.backendutils.yaml.merger",
+        "peekOfCode": "def merge_configs(*config_files):\n    final_config = {}\n    for path in config_files:\n        with open(path, 'r') as file:\n            config = yaml.safe_load(file)\n            final_config.update(config)\n    return final_config",
+        "detail": "vexilpy.backendutils.yaml.merger",
+        "documentation": {}
+    },
+    {
+        "label": "validate_config",
+        "kind": 2,
+        "importPath": "vexilpy.backendutils.yaml.validator",
+        "description": "vexilpy.backendutils.yaml.validator",
+        "peekOfCode": "def validate_config(config: Any, required_keys: list[str]) -> bool:\n    for key in required_keys:\n        if key not in config:\n            return False\n    return True",
+        "detail": "vexilpy.backendutils.yaml.validator",
+        "documentation": {}
+    }
+]

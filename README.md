@@ -1,5 +1,5 @@
 # Welcome to VexilPy
-### This documentation including its installation guide may only be applicable to VexilPy v11
+### This documentation including its installation guide may only be applicable to VexilPy v12
 
 **Documentation for VexilPy**
 
