@@ -20,15 +20,10 @@ import atexit, os, argparse, inspect, logging
 from typing import Final
 
 from .backendutils.vexilpy.pycache_remover import remove_pycache_from as _remove_pycache_from
-
-from .backendutils.basin.getval import getval
-from .backendutils.basin.object import BasinObject
-
 from .backendutils.safety.logger import init_logger
 from .backendutils.yaml.loader import load_yaml_config
-from .backendutils.yaml.validator import validate_config
 
-SYSVER: Final[float] = 11.2
+SYSVER: Final[float] = 12.0
 
 run: bool = True
 
@@ -111,7 +106,7 @@ cleanLogFile:"""
         )
     
     except FileNotFoundError:
-        PYCACHE_REMOVAL_LOCATIONS: tuple[str, ...] = ("")
+        PYCACHE_REMOVAL_LOCATIONS: tuple[str, ...] = ()
 
     global verbose
 
